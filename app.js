@@ -9,6 +9,11 @@ app.use(express.static(assetsPath));
 
 app.use(express.urlencoded({ extended: true }));
 
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs");
+
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
