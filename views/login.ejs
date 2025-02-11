@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Signup</title>
+    <title>User Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +13,7 @@
                 <div class="columns is-centered">
                     <div class="column is-4-tablet is-3-desktop">
                         <div class="box">
-                            <h1 class="title has-text-centered">Sign Up</h1>
+                            <h1 class="title has-text-centered">Login</h1>
 
                             <% if (messages && messages.length > 0) { %>
                                 <div class="notification is-danger">
@@ -25,23 +25,11 @@
                                 </div>
                             <% } %>
 
-                            <form action="/user/signup" method="POST">
-                                <div class="field">
-                                    <label class="label">First Name</label>
-                                    <div class="control">
-                                        <input class="input" type="text" name="first_name" placeholder="First Name" value="<%= oldData.first_name || '' %>" required>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <label class="label">Last Name</label>
-                                    <div class="control">
-                                        <input class="input" type="text" name="last_name" placeholder="Last Name" value="<%= oldData.last_name || '' %>" required>
-                                    </div>
-                                </div>
+                            <form action="/user/login" method="POST">
                                 <div class="field">
                                     <label class="label">Email</label>
                                     <div class="control">
-                                        <input class="input" type="email" name="email" placeholder="Email" value="<%= oldData.email || '' %>" required>
+                                        <input class="input" type="email" name="email" placeholder="Email" required>
                                     </div>
                                 </div>
                                 <div class="field">
@@ -50,21 +38,15 @@
                                         <input class="input" type="password" name="password" placeholder="Password" required>
                                     </div>
                                 </div>
-                                <div class="field">
-                                    <label class="label">Confirm Password</label>
-                                    <div class="control">
-                                        <input class="input" type="password" name="confirm_password" placeholder="Confirm Password" required>
-                                    </div>
-                                </div>
 
                                 <div class="field">
                                     <div class="control">
-                                        <button class="button is-primary is-fullwidth" type="submit">Sign Up</button>
+                                        <button class="button is-primary is-fullwidth" type="submit">Login</button>
                                     </div>
                                 </div>
 
                                 <div class="has-text-centered">
-                                    <p>Already have an account? <a href="/user/login" class="has-text-primary">Login</a></p>
+                                    <p>Don't have an account? <a href="/user/signup" class="has-text-primary">Sign Up</a></p>
                                 </div>
                             </form>
                         </div>

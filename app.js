@@ -1,18 +1,28 @@
 const express = require('express');
+const session = require('express-session');
+const flash = require('express-flash');
 const app = express();
+require('dotenv').config();
 
-const path = require("node:path");
+const path = require('path');
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 const assetsPath = path.join(__dirname, "src");
 app.use(express.static(assetsPath));
 
 app.use(express.urlencoded({ extended: true }));
 
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcryptjs");
+app.use(session({
+    secret:  process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+}));
+
+app.use(flash());
+
+const userRouter = require('./routes/userRouter');
+app.use('/', userRouter);
 
 const port = 3000;
 app.listen(port, () => {
