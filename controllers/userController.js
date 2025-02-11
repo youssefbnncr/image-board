@@ -1,13 +1,13 @@
 const bcrypt = require('bcryptjs');
-const { check, validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const queries = require('../db/queries');
 
 const signup = async (req, res) => {
-    await check('first_name', 'First name is required').notEmpty().run(req);
-    await check('last_name', 'Last name is required').notEmpty().run(req);
-    await check('email', 'Please provide a valid email').isEmail().run(req);
-    await check('password', 'Password must be at least 6 characters long').isLength({ min: 6 }).run(req);
-    await check('confirm_password', 'Passwords must match').custom((value, { req }) => value === req.body.password).run(req);
+    await body('first_name', 'First name is required').notEmpty().run(req);
+    await body('last_name', 'Last name is required').notEmpty().run(req);
+    await body('email', 'Please provide a valid email').isEmail().run(req);
+    await body('password', 'Password must be at least 6 characters long').isLength({ min: 6 }).run(req);
+    await body('confirm_password', 'Passwords must match').custom((value, { req }) => value === req.body.password).run(req);
 
     const errors = validationResult(req);
 
@@ -24,7 +24,7 @@ const signup = async (req, res) => {
         const userExists = await queries.checkUserExists(email);
         if (userExists) {
             req.flash('error', 'Email is already in use');
-            return res.status(400).redirect('/users/signup');
+            return res.status(400).redirect('/user/signup');
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
