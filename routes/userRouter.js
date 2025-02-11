@@ -2,6 +2,10 @@ const express = require('express');
 const userRouter = express.Router();
 const userController = require('../controllers/userController');
 
+userRouter.get('/', (req,res)=>{
+  res.redirect('/user/signup');
+})
+
 userRouter.get('/user/signup', (req, res) => {
     res.render('signup', { oldData: {}, messages: req.flash() });
 });
