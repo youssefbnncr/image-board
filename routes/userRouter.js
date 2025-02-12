@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 
 userRouter.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect('/user/dashboard');
+    return res.render('home');
   }
   res.redirect('/user/signup');
 });
