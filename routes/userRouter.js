@@ -32,4 +32,8 @@ userRouter.get('/user/logout', (req, res) => {
   });
 });
 
+userRouter.get('/*', (req,res)=>{
+  res.render('page404');
+})
+
 module.exports = userRouter;
