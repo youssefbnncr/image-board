@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,14 +8,78 @@
 </head>
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-end">
-        <div class="navbar-item">
-            <a class="button is-primary">
-              <strong>&#128081; Join the club</strong>
-            </a>
-        </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <% if (user && user.membership_status) { %>
+          <span class="tag is-success">Member</span>
+        <% } else { %>
+          <a class="button is-primary" id="join-club-button">
+            <strong>&#128081; Join the club</strong>
+          </a>
+        <% } %>
       </div>
     </div>
   </nav>
+  <div class="modal" id="join-club-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Join the Club</p>
+        <button class="delete" aria-label="close" id="close-modal-button"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">Enter the Secret Passphrase</label>
+          <div class="control">
+            <input class="input" type="password" id="passphrase-input" placeholder="Secret Passphrase">
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" id="submit-passphrase">Submit</button>
+        <button class="button" id="cancel-button">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <script>
+    document.getElementById("join-club-button").addEventListener("click", () => {
+      document.getElementById("join-club-modal").classList.add("is-active");
+    });
+
+    document.getElementById("close-modal-button").addEventListener("click", () => {
+      document.getElementById("join-club-modal").classList.remove("is-active");
+    });
+
+    document.getElementById("cancel-button").addEventListener("click", () => {
+      document.getElementById("join-club-modal").classList.remove("is-active");
+    });
+
+    document.getElementById("submit-passphrase").addEventListener("click", async () => {
+      const passphrase = document.getElementById("passphrase-input").value;
+
+      try {
+        const response = await fetch("/update-membership", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ passphrase }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message);
+          document.getElementById("join-club-modal").classList.remove("is-active");
+          window.location.reload();
+        } else {
+          alert(result.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>

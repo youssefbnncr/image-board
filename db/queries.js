@@ -22,9 +22,16 @@ const getUserById = async (id) => {
   return result.rows[0];
 };
 
+const updateMembershipStatus = async (userId) => {
+  const query = 'UPDATE "users" SET membership_status = true WHERE id = $1 RETURNING *';
+  const result = await pool.query(query, [userId]);
+  return result.rows[0];
+};
+
 module.exports = {
   checkUserExists,
   insertUser,
   getUserByEmail,
   getUserById,
+  updateMembershipStatus
 };

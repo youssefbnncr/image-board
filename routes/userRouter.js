@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 
 userRouter.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    return res.render('home');
+    return res.render('home', { user: req.user });
   }
   res.redirect('/user/signup');
 });
@@ -32,8 +32,10 @@ userRouter.get('/user/logout', (req, res) => {
   });
 });
 
-userRouter.get('/*', (req,res)=>{
+userRouter.post('/update-membership', userController.updateMembership);
+
+userRouter.get('/*', (req, res) => {
   res.render('page404');
-})
+});
 
 module.exports = userRouter;

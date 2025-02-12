@@ -66,8 +66,29 @@ const dashboard = (req, res) => {
   res.render('dashboard', { user: req.user });
 };
 
+const updateMembership = async (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  const { passphrase } = req.body;
+
+  if (passphrase === "secretpassphrase") {
+    try {
+      const updatedUser = await queries.updateMembershipStatus(req.user.id);
+      res.status(200).json({ message: 'Membership status updated successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Failed to update membership status' });
+    }
+  } else {
+    res.status(400).json({ message: 'Incorrect passphrase' });
+  }
+};
+
 module.exports = {
   signup,
   login,
   dashboard,
+  updateMembership
 };
