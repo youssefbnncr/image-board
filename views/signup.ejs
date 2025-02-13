@@ -15,7 +15,7 @@
                         <div class="box">
                             <h1 class="title has-text-centered">Sign Up</h1>
 
-                            <% if (messages.success && messages.success.length > 0) { %>
+                            <% if (messages && messages.success && messages.success.length > 0) { %>
                                 <div class="notification is-success">
                                     <ul>
                                         <% messages.success.forEach(msg => { %>
@@ -25,7 +25,7 @@
                                 </div>
                             <% } %>
 
-                            <% if (messages.error && messages.error.length > 0) { %>
+                            <% if (messages && messages.error && messages.error.length > 0) { %>
                                 <div class="notification is-danger">
                                     <ul>
                                         <% messages.error.forEach(msg => { %>

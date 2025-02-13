@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const flash = require('express-flash');
 const passport = require('passport');
 const app = express();
 require('dotenv').config();
@@ -19,10 +18,10 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 );
 
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 

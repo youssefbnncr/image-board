@@ -10,18 +10,24 @@ userRouter.get('/', (req, res) => {
 });
 
 userRouter.get('/user/signup', (req, res) => {
-  res.render('signup', { oldData: {}, messages: req.flash() });
+  res.render('signup', { oldData: {}, messages: {} });
 });
 
 userRouter.post('/user/signup', userController.signup);
 
 userRouter.get('/user/login', (req, res) => {
-  res.render('login', { messages: req.flash() });
+  res.render('login', { messages: {} });
 });
 
 userRouter.post('/user/login', userController.login);
 
-userRouter.get('/user/dashboard', userController.dashboard);
+userRouter.get('/user/dashboard', (req,res)=>{
+  if(req.isAuthenticated()) {
+    res.render('dashboard',{user: req.user});
+  } else {
+    res.redirect('/user/signup');
+  }
+});
 
 userRouter.get('/user/logout', (req, res) => {
   req.logout((err) => {

@@ -1,8 +1,3 @@
-const bcrypt = require('bcryptjs');
-const { body, validationResult } = require('express-validator');
-const passport = require('passport');
-const queries = require('../db/queries');
-
 const signup = async (req, res) => {
   await body('first_name', 'First name is required').notEmpty().run(req);
   await body('last_name', 'Last name is required').notEmpty().run(req);
@@ -16,6 +11,7 @@ const signup = async (req, res) => {
     return res.status(400).render('signup', {
       errors: errors.array(),
       oldData: req.body,
+      messages: { error: errors.array().map(err => err.msg) }
     });
   }
 
@@ -24,71 +20,34 @@ const signup = async (req, res) => {
   try {
     const userExists = await queries.checkUserExists(email);
     if (userExists) {
-      req.flash('error', 'Email is already in use');
-      return res.status(400).redirect('/user/signup');
+      return res.status(400).render('signup', {
+        oldData: req.body,
+        messages: { error: ['Email is already in use'] }
+      });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     await queries.insertUser(first_name, last_name, email, hashedPassword, false);
 
-    req.flash('success', 'Signup successful, please log in!');
-    res.redirect('/user/login');
+    return res.render('login', { messages: { success: ['Signup successful, please log in!'] } });
   } catch (error) {
     console.error(error);
-    req.flash('error', 'An error occurred, please try again');
-    res.redirect('/user/signup');
+    return res.render('signup', {
+      oldData: req.body,
+      messages: { error: ['An error occurred, please try again'] }
+    });
   }
 };
 
 const login = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
+    if (err) return next(err);
     if (!user) {
-      req.flash('error', info.message);
-      return res.redirect('/user/login');
+      return res.render('login', { messages: { error: [info.message] } });
     }
     req.logIn(user, (err) => {
-      if (err) {
-        return next(err);
-      }
+      if (err) return next(err);
       return res.redirect('/user/dashboard');
     });
   })(req, res, next);
-};
-
-const dashboard = (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.redirect('/user/signup');
-  }
-  res.render('dashboard', { user: req.user });
-};
-
-const updateMembership = async (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-
-  const { passphrase } = req.body;
-
-  if (passphrase === "secretpassphrase") {
-    try {
-      const updatedUser = await queries.updateMembershipStatus(req.user.id);
-      res.status(200).json({ message: 'Membership status updated successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Failed to update membership status' });
-    }
-  } else {
-    res.status(400).json({ message: 'Incorrect passphrase' });
-  }
-};
-
-module.exports = {
-  signup,
-  login,
-  dashboard,
-  updateMembership
 };
