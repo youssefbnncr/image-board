@@ -65,3 +65,11 @@ exports.addPost = async(req,res)=>{
   await queries.insertPost(title,text,userId);
   res.redirect('/');
 }
+
+exports.joinClub = async(req,res)=>{
+  if(req.body.passphrase === 'Cats are useless'){
+    const userId = req.user.id;
+    await queries.updateUserStatus(true,userId);
+  }
+  res.redirect('/');
+}
