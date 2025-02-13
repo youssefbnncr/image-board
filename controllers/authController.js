@@ -58,3 +58,10 @@ exports.getPosts = async()=>{
   const posts = await queries.selectPosts();
   return posts;
 }
+
+exports.addPost = async(req,res)=>{
+  const {title,text} = req.body;
+  const userId = req.user.id;
+  await queries.insertPost(title,text,userId);
+  res.redirect('/');
+}
