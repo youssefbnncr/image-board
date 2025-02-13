@@ -53,3 +53,8 @@ exports.logout = (req, res) => {
     res.redirect('/login');
   });
 };
+
+exports.getPosts = async()=>{
+  const posts = await queries.selectPosts();
+  return posts;
+}
