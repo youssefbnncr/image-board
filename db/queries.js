@@ -37,6 +37,10 @@ const insertPost = async(title,text,userId) =>{
   await pool.query('INSERT INTO messages (title,text,user_id) VALUES ($1,$2,$3)',[title, text, userId]);
 }
 
+const updateUserStatus = async(status,userId) =>{
+  await pool.query('UPDATE users SET membership_status = $1 WHERE id = $2',[status,userId]);
+}
+
 module.exports = {
   checkUserExists,
   insertUser,
@@ -44,5 +48,6 @@ module.exports = {
   getUserById,
   updateMembershipStatus,
   selectPosts,
-  insertPost
+  insertPost,
+  updateUserStatus
 };
