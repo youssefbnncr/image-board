@@ -26,4 +26,6 @@ authRouter.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 authRouter.get('/logout', authController.logout);
 
+authRouter.post('/addPost', authController.addPost);
+
 module.exports = authRouter;
