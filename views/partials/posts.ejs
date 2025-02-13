@@ -6,7 +6,16 @@
           <div class="box">
             <h2 class="subtitle is-4"><%= post.title %></h2>
             <p><%= post.text %></p>
-            <p class="has-text-grey"><%= post.timestamp %> by User <%= post.user_id %></p>
+            <p class="has-text-grey">
+              <%= new Date(post.timestamp).toLocaleString('en-GB', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+              }) %> by User <%= post.user_id %>
+            </p>
           </div>
         <% }) %>
       </div>
