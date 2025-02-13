@@ -29,10 +29,12 @@
       <!-- Join the club -->
       <div class="navbar-item">
         <% if (user && user.membership_status) { %>
-          <span class="tag is-success">Member</span>
+          <a class="button is-primary">
+            <strong>&#127828; Be a moderator</strong>
+          </a>
         <% } else { %>
           <a class="button is-primary" id="join-club-button">
-            <strong>&#128081; Join the club</strong>
+            <strong>&#128104; Be a member</strong>
           </a>
         <% } %>
       </div>
@@ -50,6 +52,7 @@
   </button>
   <!-- modal for joining the club -->
   <div class="modal" id="join-club-modal">
+    <form action="/joinClub" method="post">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
@@ -60,14 +63,15 @@
         <div class="field">
           <label class="label">Enter the Secret Passphrase</label>
           <div class="control">
-            <input class="input" type="password" id="passphrase-input" placeholder="Secret Passphrase">
+            <input class="input" type="text" id="passphrase-input" placeholder="Cats are useless" name="passphrase">
           </div>
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" id="submit-passphrase">Submit</button>
+        <button class="button is-success" id="submit-passphrase" type="submit">Submit</button>
         <button class="button" id="cancel-button">Cancel</button>
       </footer>
+    </form>
     </div>
   </div>
   <!-- modal for adding post -->
@@ -113,33 +117,6 @@
 
     document.getElementById("cancel-button").addEventListener("click", () => {
       document.getElementById("join-club-modal").classList.remove("is-active");
-    });
-
-    document.getElementById("submit-passphrase").addEventListener("click", async () => {
-      const passphrase = document.getElementById("passphrase-input").value;
-
-      try {
-        const response = await fetch("/update-membership", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ passphrase }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          alert(result.message);
-          document.getElementById("join-club-modal").classList.remove("is-active");
-          window.location.reload();
-        } else {
-          alert(result.message);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred. Please try again.");
-      }
     });
 
     // Send message
