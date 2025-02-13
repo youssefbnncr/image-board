@@ -28,4 +28,6 @@ authRouter.get('/logout', authController.logout);
 
 authRouter.post('/addPost', authController.addPost);
 
+authRouter.post('/joinClub', authController.joinClub);
+
 module.exports = authRouter;
