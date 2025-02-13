@@ -28,10 +28,16 @@ const updateMembershipStatus = async (userId) => {
   return result.rows[0];
 };
 
+const selectPosts = async() =>{
+  const result = await pool.query('SELECT * FROM messages');
+  return result.rows;
+}
+
 module.exports = {
   checkUserExists,
   insertUser,
   getUserByEmail,
   getUserById,
-  updateMembershipStatus
+  updateMembershipStatus,
+  selectPosts
 };
