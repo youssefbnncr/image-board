@@ -10,6 +10,22 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-end">
       <div class="navbar-item">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <% let username = user.email.split("@")[0]; %>
+            <%- username %>
+          </a>
+          <div class="navbar-dropdown">
+            <a href="/dashboard" class="navbar-item">
+              Dashboard
+            </a>
+            <a href="/logout" class="navbar-item has-text-danger">
+              Logout
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-item">
         <% if (user && user.membership_status) { %>
           <span class="tag is-success">Member</span>
         <% } else { %>
