@@ -3,8 +3,9 @@ const authRouter = express.Router();
 const authController = require('../controllers/authController');
 const { ensureAuthenticated, forwardAuthenticated } = require('../middleware/authMiddleware');
 
-authRouter.get('/', ensureAuthenticated, (req, res) => {
-  res.render('home', { user: req.user });
+authRouter.get('/', ensureAuthenticated, async (req,res) => {
+  const posts = await authController.getPosts();
+  res.render('home', { user: req.user, posts });
 });
 
 authRouter.get('/signup', forwardAuthenticated, (req, res) => {
