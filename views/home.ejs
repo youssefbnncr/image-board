@@ -38,6 +38,8 @@
       </div>
     </div>
   </nav>
+  <!-- POSTS -->
+   <%- include('partials/posts') %>
   <!-- button add message -->
   <button class="button is-hoverable is-primary is-rounded p-4"
           style="position: fixed; bottom: 4%; right: 2%;"
@@ -46,7 +48,6 @@
     <i class="fas fa-plus" style="font-size: 2rem;"></i>
   </span>
   </button>
-
   <!-- modal for joining the club -->
   <div class="modal" id="join-club-modal">
     <div class="modal-background"></div>
@@ -75,7 +76,7 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Post</p>
-        <button class="delete" aria-label="close" id="close-modal-button"></button>
+        <button class="delete" aria-label="close" id="close-modal-btn"></button>
       </header>
       <section class="modal-card-body">
         <div class="field">
@@ -93,7 +94,7 @@
       </section>
       <footer class="modal-card-foot">
         <button class="button is-success" id="submit-passphrase">Send</button>
-        <button class="button" id="cancel-button">Cancel</button>
+        <button class="button" id="cancel-btn">Cancel</button>
       </footer>
     </div>
   </div>
@@ -143,6 +144,15 @@
     document.getElementById("add-post-button").addEventListener("click", () => {
       document.getElementById("add-post-modal").classList.add("is-active");
     });
+
+    document.getElementById("close-modal-btn").addEventListener("click", () => {
+      document.getElementById("add-post-modal").classList.remove("is-active");
+    });
+
+    document.getElementById("cancel-btn").addEventListener("click", () => {
+      document.getElementById("add-post-modal").classList.remove("is-active");
+    });
+
   </script>
 </body>
 </html>
