@@ -33,11 +33,16 @@ const selectPosts = async() =>{
   return result.rows;
 }
 
+const insertPost = async(title,text,userId) =>{
+  await pool.query('INSERT INTO messages (title,text,user_id) VALUES ($1,$2,$3)',[title, text, userId]);
+}
+
 module.exports = {
   checkUserExists,
   insertUser,
   getUserByEmail,
   getUserById,
   updateMembershipStatus,
-  selectPosts
+  selectPosts,
+  insertPost
 };
