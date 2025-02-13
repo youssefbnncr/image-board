@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <section class="section">
+      <div class="container">
+        <% posts.forEach(post => { %>
+          <div class="box">
+            <h2 class="subtitle is-4"><%= post.title %></h2>
+            <p><%= post.text %></p>
+            <p class="has-text-grey"><%= post.timestamp %> by User <%= post.user_id %></p>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </body>
+</html>
