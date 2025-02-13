@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Club</title>
   <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -25,6 +26,7 @@
           </div>
         </div>
       </div>
+      <!-- Join the club -->
       <div class="navbar-item">
         <% if (user && user.membership_status) { %>
           <span class="tag is-success">Member</span>
@@ -36,6 +38,16 @@
       </div>
     </div>
   </nav>
+  <!-- button add message -->
+  <button class="button is-hoverable is-primary is-rounded p-4"
+          style="position: fixed; bottom: 4%; right: 2%;"
+          id="add-post-button">
+    <span class="icon is-large has-text-black">
+    <i class="fas fa-plus" style="font-size: 2rem;"></i>
+  </span>
+  </button>
+
+  <!-- modal for joining the club -->
   <div class="modal" id="join-club-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
@@ -57,7 +69,37 @@
       </footer>
     </div>
   </div>
+  <!-- modal for adding post -->
+  <div class="modal" id="add-post-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Post</p>
+        <button class="delete" aria-label="close" id="close-modal-button"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">Tittle</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Letter</label>
+          <div class="control">
+            <textarea class="textarea" rows="4"></textarea>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" id="submit-passphrase">Send</button>
+        <button class="button" id="cancel-button">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <!-- Scripts -->
   <script>
+    //Model Join club
     document.getElementById("join-club-button").addEventListener("click", () => {
       document.getElementById("join-club-modal").classList.add("is-active");
     });
@@ -95,6 +137,11 @@
         console.error("Error:", error);
         alert("An error occurred. Please try again.");
       }
+    });
+
+    // Send message
+    document.getElementById("add-post-button").addEventListener("click", () => {
+      document.getElementById("add-post-modal").classList.add("is-active");
     });
   </script>
 </body>
