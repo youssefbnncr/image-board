@@ -72,30 +72,32 @@
   </div>
   <!-- modal for adding post -->
   <div class="modal" id="add-post-modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Post</p>
-        <button class="delete" aria-label="close" id="close-modal-btn"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="field">
-          <label class="label">Tittle</label>
-          <div class="control">
-            <input class="input" type="text">
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Letter</label>
-          <div class="control">
-            <textarea class="textarea" rows="4"></textarea>
-          </div>
-        </div>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success" id="submit-passphrase">Send</button>
-        <button class="button" id="cancel-btn">Cancel</button>
-      </footer>
+    <form action="/addPost" method="post">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Post</p>
+          <button class="delete" aria-label="close" id="close-modal-btn"></button>
+        </header>
+          <section class="modal-card-body">
+            <div class="field">
+              <label class="label">Title</label>
+              <div class="control">
+                <input class="input" type="text" name="title">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Letter</label>
+              <div class="control">
+                <textarea class="textarea" rows="4" name="text"></textarea>
+              </div>
+            </div>
+          </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="submit-passphrase" type="submit">Send</button>
+          <button class="button" id="cancel-btn">Cancel</button>
+        </footer>
+    </form>
     </div>
   </div>
   <!-- Scripts -->
