@@ -30,4 +30,9 @@ authRouter.post('/addPost', authController.addPost);
 
 authRouter.post('/joinClub', authController.joinClub);
 
+authRouter.get('/*', (req,res)=>{
+  res.render('page404');
+});
+
+
 module.exports = authRouter;
