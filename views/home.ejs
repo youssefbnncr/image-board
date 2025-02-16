@@ -132,6 +132,13 @@
       document.getElementById("add-post-modal").classList.remove("is-active");
     });
 
+    // Prevent default
+    document.getElementById("cancel-button").addEventListener("click",() => {
+      event.preventDefault();
+    });
+    document.getElementById("close-modal-button").addEventListener("click",() => {
+      event.preventDefault();
+    })
   </script>
 </body>
 </html>
