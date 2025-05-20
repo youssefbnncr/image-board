@@ -20,6 +20,9 @@ module.exports = {
     static: ['assets', 'css'],
     hot: true,
     watchFiles: ['src/**/*.pug', 'src/**/*.css'],
+    proxy: {
+      '/api': 'http://localhost:3000', // Proxy Express API requests
+    },
   },
   plugins:[
     new PugPlugin({
