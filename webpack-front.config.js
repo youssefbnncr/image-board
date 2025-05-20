@@ -5,6 +5,7 @@ const PugPlugin = require('pug-plugin');
 
 module.exports = {
   mode: "development",
+  target:"web",
   entry: {
     index: './src/views/index.pug',
     styles: './src/css/style.css', // Add your main CSS file here
@@ -13,16 +14,12 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: '/', // Add this for proper HMR
   },
   devtool: "eval-source-map",
   devServer: {
     static: ['assets', 'css'],
     hot: true,
     watchFiles: ['src/**/*.pug', 'src/**/*.css'],
-    proxy: {
-      '/api': 'http://localhost:3000', // Proxy Express API requests
-    },
   },
   plugins:[
     new PugPlugin({
