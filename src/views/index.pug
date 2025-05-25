@@ -1,4 +1,15 @@
-h2 Hello world
-a(href="/user/register") register
-br
-a(href="/user/login") login
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Landchan 
+        link(rel="stylesheet", href="style.css")
+    body 
+        header 
+            h1.header-title Landchan
+        .content
+            a(href="/user/register" class="auth sign-up") Register
+            a(href="/user/login" class="auth sign-in") Log-in
+        footer 
+            a() About-us
+            p#copyright Copyright 2025
