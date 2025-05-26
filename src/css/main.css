@@ -20,7 +20,7 @@ header{
 .auth-container{
     margin: 8px;
 }
-.auth{
+.btn{
     border: 1px solid black;
     border-radius: 4px;
     padding: 8px;
@@ -32,7 +32,7 @@ header{
     text-decoration: none;
     text-align: center;
 }
-.sign-up{
+.register{
     color: rgb(169, 0, 0);
     font-weight: bold;
 }
