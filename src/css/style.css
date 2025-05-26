@@ -1,48 +1,5 @@
-*{
-    background-color: #FFFFFF;
-    padding: 0px;
-    margin: 0px;
-}
-header{
-    margin-bottom: 16px;
-    position: sticky;
-}
-.header-title{
-    color: #64E2B7;
-    text-shadow: 1px 1px 1px grey;
-}
-
 body{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-}
-
-.content{
-    margin: 32px;
-    display: flex;
-    flex-direction: column;
-}
-.auth{
-    border: 1px solid black;
-    border-radius: 4px;
-    padding: 8px;
-    margin: 10px;
-    box-shadow: 1px 1px 1px 1px grey;
-    background-color: #DC8BE0;
-    width: 80px;
-    color: black;
-    text-decoration: none;
-    text-align: center;
-}
-footer{
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    width: 100vw;
-    justify-content: space-between;
-}
-#copyright{
-    color: grey;
 }

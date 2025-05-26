@@ -1,0 +1,50 @@
+*{
+    background-color: #FFFFFF;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+header{
+    margin-bottom: 16px;
+    padding: 8px;
+    position: sticky;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-title{
+    color: #64E2B7;
+    text-shadow: 1px 1px 1px grey;
+}
+.auth-container{
+    margin: 8px;
+}
+.auth{
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+    background-color: #DC8BE0;
+    width: 80px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+.sign-up{
+    color: rgb(169, 0, 0);
+    font-weight: bold;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+
+    padding: 8px;
+    display: flex;
+    width: 98vw;
+    justify-content: space-between;
+}
+#copyright{
+    color: grey;
+}

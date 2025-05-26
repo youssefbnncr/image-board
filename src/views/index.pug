@@ -3,13 +3,8 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Landchan 
-        link(rel="stylesheet", href="style.css")
+        link(rel="stylesheet", href="/main.css")
     body 
-        header 
-            h1.header-title Landchan
-        .content
-            a(href="/user/register" class="auth sign-up") Register
-            a(href="/user/login" class="auth sign-in") Log-in
-        footer 
-            a() About-us
-            p#copyright Copyright 2025
+        include ../assets/header
+
+        include ../assets/footer
