@@ -62,8 +62,12 @@ input{
     border-radius: 8px;
     margin: 8px;
     border-width: 2px;
-    border-color: black;
+    border-color: grey;
     border-style: solid;
+    outline: none;
+}
+input:focus{
+    border-color: black;
 }
 .auth-container{
     display: flex;

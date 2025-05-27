@@ -4,6 +4,7 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Register
         link(rel="stylesheet", href="/main.css")
+        link(rel="stylesheet", href="/form.css")
         script(type='text/javascript', src='/form-validation.js', defer)
     body 
         include ../partials/header.pug
@@ -14,13 +15,13 @@ html(lang="en")
                     li
                         label(for="username") Username*
                         br
+                        span(class='error', id='usernameError')
                         input(type="text" name="username" id="username", required, minLength='5', maxLength='18')
-                        span(class='error')
                     li
                         label(for="password") Password*
                         br
+                        span(class='error', id='passwordError')
                         input(type="password" name="password" id="password", required, minLength='8', maxLength='32')
-                        span(class='error')
                     li
                         button(type="submit" class="btn register") Register
         include ../partials/footer.pug

@@ -1,0 +1,6 @@
+.error.active + input{
+    background-color: rgb(254, 203, 203);
+}
+.error.active + input:focus{
+    border-color: red;
+}
