@@ -1,14 +1,22 @@
-const pool = require('./pool')
+const pool = require('./pool');
 const bcrypt = require('bcryptjs');
+const { body, validationResult } = require("express-validator");
 
-const signup = async(username, password) => {
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        await pool.query("INSERT INTO users (username, password) VALUES (\$1, \$2)",[username,hashedPassword])
-        console.log('New account has been created')
-    } catch(e) {
-        console.error("Error creating user:",e);
-    }
-}
+const signupValidation = [
+    body('username')
+        .notEmpty().withMessage('Username should be filled.')
+        .isLength({ min: 5, max: 18 }).withMessage('Username should be at least 5 characters and at most 18 characters.')
+        .matches(/^[a-zA-Z0-9]+$/).withMessage('Username should only contain letters and numbers.'),
+    body('password')
+        .notEmpty().withMessage('Password should be filled.')
+        .isLength({ min: 8, max: 32 }).withMessage('Password should be between 8 and 32 characters long.')
+        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]+$/).withMessage('Password should include letters, numbers, and symbols.')
+];
 
-module.exports = {signup};
+const signup = async (username, password) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await pool.query("INSERT INTO users (username, password) VALUES ($1, $2)", [username, hashedPassword]);
+    console.log('New account has been created');
+};
+
+module.exports = { signup, signupValidation };

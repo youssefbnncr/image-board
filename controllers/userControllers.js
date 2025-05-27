@@ -1,22 +1,37 @@
 const db = require("../model/queries");
+const { validationResult } = require("express-validator");
 
 // Views
-const register = (req,res) => {
+const sigup = (req,res) => {
+    console.log(req.path)
     res.render('sign-up',{current_path:req.path});
 }
 
-const login = (req,res) => {
+const signin = (req,res) => {
+    console.log(req.path)
     res.render('sign-in',{current_path:req.path})
 }
+
 // Database
-const signup = async(req,res) => {
-    const {username, password} = req.body;
-    await db.signup(username,password);
-    res.redirect('/');
-}
+const addUser = async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { username, password } = req.body;
+
+    try {
+        await db.signup(username, password);
+        res.redirect('/');
+    } catch (e) {
+        console.error("Signup error:", e);
+        res.status(500).send("Server error");
+    }
+};
 
 module.exports = {
-    register,
-    login,
-    signup
+    sigup,
+    signin,
+    addUser
 }

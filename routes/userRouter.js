@@ -1,10 +1,11 @@
-const user = require('../controllers/userControllers')
-const {Router} = require('express');
+const user = require('../controllers/userControllers');
+const { signupValidation } = require('../model/queries');
+const { Router } = require('express');
 const userRouter = Router();
 
-userRouter.get('/register',user.register)
-userRouter.get('/login',user.login)
+userRouter.get('/register', user.sigup);
+userRouter.get('/login', user.signin);
 
-userRouter.post('/add-user',user.signup)
+userRouter.post('/add-user', signupValidation, user.addUser);
 
 module.exports = userRouter;
