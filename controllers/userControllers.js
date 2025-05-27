@@ -3,12 +3,10 @@ const { validationResult } = require("express-validator");
 
 // Views
 const sigup = (req,res) => {
-    console.log(req.path)
     res.render('sign-up',{current_path:req.path});
 }
 
 const signin = (req,res) => {
-    console.log(req.path)
     res.render('sign-in',{current_path:req.path})
 }
 

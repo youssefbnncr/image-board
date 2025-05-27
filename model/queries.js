@@ -1,6 +1,6 @@
 const pool = require('./pool');
 const bcrypt = require('bcryptjs');
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
 
 const signupValidation = [
     body('username')
