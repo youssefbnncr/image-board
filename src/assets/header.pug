@@ -1,5 +1,10 @@
 header 
     h1.header-title Landchan
     .auth-container 
+       -if (current_path !== '/register' && current_path !== '/login')
         a(href="/user/register" class="btn register") Register
+        a(href="/user/login" class="btn log-in") Log-in
+       -else if (current_path !== '/register')
+        a(href="/user/register" class="btn register") Register
+       -else if (current_path !== '/login')
         a(href="/user/login" class="btn log-in") Log-in

@@ -6,6 +6,7 @@ html(lang="en")
         link(rel="stylesheet", href="/main.css")
     body 
         include ../assets/header.pug
+- console.log(current_path)
         h2 Register
         form(action="/user/add-user", method="post")
             ul

@@ -2,13 +2,12 @@ const db = require("../model/queries");
 
 // Views
 const register = (req,res) => {
-    res.render('sign-up',{current_path:req.params});
+    res.render('sign-up',{current_path:req.path});
 }
 
 const login = (req,res) => {
-    res.render('sign-in',{current_path:req.params})
+    res.render('sign-in',{current_path:req.path})
 }
-
 // Database
 const signup = async(req,res) => {
     const {username, password} = req.body;
