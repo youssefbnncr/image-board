@@ -1,9 +1,30 @@
 const path = require("node:path");
 const express = require("express");
+const passport = require("passport");
+const session = require('express-session');
+const pgSession = require("connect-pg-simple")(session);
+
+const pool = require('./model/pool')
+const initializePassport = require('./config/passportConfig');
+require('dotenv').config();
 
 const userRouter = require('./routes/userRouter')
 
 const app = express();
+
+initializePassport(passport);
+app.use(session({
+    store: new pgSession({
+      pool: pool,
+    }),
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
+    rolling: true,
+ 	secret: `${process.env.session_password}`,
+	resave: false,
+	saveUninitialized: false,
+}));
+app.use(passport.session());
+
 app.set("views", path.join(__dirname, "src/views"));
 app.set("view engine", "pug");
 
