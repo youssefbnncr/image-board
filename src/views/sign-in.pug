@@ -6,16 +6,19 @@ html(lang="en")
         link(rel="stylesheet", href="/main.css")
     body 
         include ../assets/header.pug
-        h2 Login
-        form(action="/userLogin", method="post")
-            ul
-                li
-                    label(for="username") username
-                    input(type="text" name="username" id="username")
-                li
-                    label(for="password") password
-                    input(type="password" name="password" id="password")
-                li 
-                    button(type="submit" class="btn log-in") Log-in
+        .auth-container
+            h1 Login
+            form(action="/userLogin", method="post")
+                ul.auth-form
+                    li
+                        label(for="username") Username
+                        br
+                        input(type="text" name="username" id="username")
+                    li
+                        label(for="password") Password
+                        br
+                        input(type="password" name="password" id="password")
+                    li 
+                        button(type="submit" class="btn log-in") Log-in
         
         include ../assets/footer.pug

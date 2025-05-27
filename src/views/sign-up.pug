@@ -6,16 +6,18 @@ html(lang="en")
         link(rel="stylesheet", href="/main.css")
     body 
         include ../assets/header.pug
-- console.log(current_path)
-        h2 Register
-        form(action="/user/add-user", method="post")
-            ul
-                li
-                    label(for="username") username
-                    input(type="text" name="username" id="username")
-                li
-                    label(for="password") password
-                    input(type="password" name="password" id="password")
-                li
-                    button(type="submit" class="btn register") Register
+        .auth-container
+            h1 Register
+            form(action="/user/add-user", method="post")
+                ul.auth-form
+                    li
+                        label(for="username") username
+                        br
+                        input(type="text" name="username" id="username")
+                    li
+                        label(for="password") password
+                        br
+                        input(type="password" name="password" id="password")
+                    li
+                        button(type="submit" class="btn register") Register
         include ../assets/footer.pug
