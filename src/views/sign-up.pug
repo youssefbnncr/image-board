@@ -5,7 +5,7 @@ html(lang="en")
         title Register
         link(rel="stylesheet", href="/main.css")
     body 
-        include ../assets/header.pug
+        include ../partials/header.pug
         .auth-container
             h1 Register
             form(action="/user/add-user", method="post")
@@ -20,4 +20,4 @@ html(lang="en")
                         input(type="password" name="password" id="password")
                     li
                         button(type="submit" class="btn register") Register
-        include ../assets/footer.pug
+        include ../partials/footer.pug

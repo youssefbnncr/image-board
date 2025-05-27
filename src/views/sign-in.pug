@@ -5,7 +5,7 @@ html(lang="en")
         title Login
         link(rel="stylesheet", href="/main.css")
     body 
-        include ../assets/header.pug
+        include ../partials/header.pug
         .auth-container
             h1 Login
             form(action="/userLogin", method="post")
@@ -21,4 +21,4 @@ html(lang="en")
                     li 
                         button(type="submit" class="btn log-in") Log-in
         
-        include ../assets/footer.pug
+        include ../partials/footer.pug
