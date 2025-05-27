@@ -9,5 +9,6 @@ userRouter.get("/log-out", user.logout);
 
 userRouter.post('/add-user', signupValidation, user.addUser);
 userRouter.post('/userLogin', user.login);
+userRouter.port('/log-out', user.logout);
 
 module.exports = userRouter;
