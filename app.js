@@ -34,7 +34,6 @@ const assetsPath = path.join(__dirname, "src/css");
 app.use(express.static(assetsPath));
 
 app.use('/user/',userRouter);
-app.get('/',(req,res)=>res.render("index"))
-
+app.get('/',(req,res)=>res.render("index",{isLoged:req.isAuthenticated()}))
 
 app.listen(3000, () => console.log(`Server is running at: http://localhost:3000`));
