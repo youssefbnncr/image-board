@@ -1,0 +1,45 @@
+const form = document.querySelector('form')
+const username = document.querySelector('#username')
+const password = document.querySelector('#password')
+const usernameError = document.querySelector('#username + span.error')
+const passwordError = document.querySelector('#password + span.error')
+
+username.addEventListener('input', (event)=>{
+    if (username.validity.valid){
+        usernameError.textContent = ''
+        usernameError.className = 'error'
+    } else {
+        showError()
+    }
+})
+
+password.addEventListener('input', (event)=>{
+    if (password.validity.valid){
+        passwordError.textContent = ''
+        passwordError.className = 'error'
+    } else {
+        showError()
+    }
+})
+
+form.addEventListener('submit', (event)=>{
+    if (!username.validity.valid || !password.validity.valid){
+        showError()
+        event.preventDefault()
+    }
+})
+
+function showError(){
+    if (username.validity.tooShort){
+        usernameError.textContent = 'the username must at least contain 5 characters'
+    } else if (username.validity.tooLong) {
+        usernameError.textContent = 'the username is too long'
+    }
+
+    if (password.validity.tooShort){
+        passwordError.textContent = 'Password must at least contain 8 characters'
+    } else if (password.validity.tooLong){
+        passwordError.textContent = 'Password is too long, max 32 characters'
+    }
+    usernameError.className = 'error active'
+}
