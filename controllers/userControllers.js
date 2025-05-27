@@ -1,18 +1,17 @@
 const db = require("../model/queries");
 const { validationResult } = require("express-validator");
+const passport = require('passport');
 
 // Views
-const sigup = (req,res) => {
-    console.log(req.path)
+const signup = (req,res) => {
     res.render('sign-up',{current_path:req.path});
 }
 
 const signin = (req,res) => {
-    console.log(req.path)
     res.render('sign-in',{current_path:req.path})
 }
 
-// Database
+// Signin and Signup
 const addUser = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -30,8 +29,26 @@ const addUser = async (req, res) => {
     }
 };
 
+const login = async (req,res,next) => {
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/user/login"
+  })(req,res,next);
+}
+
+const logout = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
+
 module.exports = {
-    sigup,
+    signup,
     signin,
-    addUser
+    addUser,
+    login,
+    logout
 }
