@@ -11,13 +11,13 @@ html(lang="en")
             form(action="/user/add-user", method="post")
                 ul.auth-form
                     li
-                        label(for="username") username
+                        label(for="username") Username*
                         br
-                        input(type="text" name="username" id="username")
+                        input(type="text" name="username" id="username", required)
                     li
-                        label(for="password") password
+                        label(for="password") Password*
                         br
-                        input(type="password" name="password" id="password")
+                        input(type="password" name="password" id="password", required)
                     li
                         button(type="submit" class="btn register") Register
         include ../partials/footer.pug

@@ -1,10 +1,13 @@
 header 
-    h1.header-title Landchan
-    .auth-buttons 
-       -if (current_path !== '/register' && current_path !== '/login')
+    a(href="/"): h1.header-title Landchan
+    .auth-buttons
+       -if (isLoged==true)
+        p Logged-in!
+        form(action="/user/log-out", method="post"): button(type="submit") Log-out
+       -else if (current_path !== '/register' && current_path !== '/login' && isLoged!==true)
         a(href="/user/register" class="btn register") Register
         a(href="/user/login" class="btn log-in") Log-in
-       -else if (current_path !== '/register')
+       -else if (current_path !== '/register' && isLoged!==true)
         a(href="/user/register" class="btn register") Register
-       -else if (current_path !== '/login')
+       -else if (current_path !== '/login' && isLoged!==true)
         a(href="/user/login" class="btn log-in") Log-in
