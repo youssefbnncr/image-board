@@ -16,12 +16,12 @@ html(lang="en")
                         label(for="username") Username*
                         br
                         span(class='error', id='usernameError')
-                        input(type="text" name="username" id="username", required, minLength='5', maxLength='18')
+                        input(type="text" name="username" id="username", required, minLength='5', maxLength='18', pattern='[A-Za-z0-9]+')
                     li
                         label(for="password") Password*
                         br
                         span(class='error', id='passwordError')
-                        input(type="password" name="password" id="password", required, minLength='8', maxLength='32')
+                        input(type="password" name="password" id="password", required, minLength='8', maxLength='32', pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\w\\s]).{8,}$')
                     li
                         button(type="submit" class="btn register") Register
         include ../partials/footer.pug
