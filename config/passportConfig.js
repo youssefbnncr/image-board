@@ -8,13 +8,13 @@ function initialize(passport) {
             const result = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
             const user = result.rows[0];
 
-            if (!user) return done(null, false, { message: "No user found" });
+            if (!user) return done(null, false, { message: "Username not found" });
 
             const isMatch = await bcrypt.compare(password, user.password);
             if (isMatch) {
                 return done(null, user);
             } else {
-                return done(null, false, { message: "Password incorrect" });
+                return done(null, false, { message: "Incorrect password" });
             }
         } catch (err) {
             return done(err);

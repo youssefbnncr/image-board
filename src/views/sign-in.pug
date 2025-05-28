@@ -8,6 +8,10 @@ html(lang="en")
         include ../partials/header.pug
         .auth-container
             h1 Login
+            if error_messages.length
+                ul.flash-errors
+                    each msg in error_messages
+                        li.error-message= msg
             form(action="/user/userLogin", method="post")
                 ul.auth-form
                     li

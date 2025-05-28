@@ -32,7 +32,8 @@ const addUser = async (req, res) => {
 const login = async (req,res,next) => {
     passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/user/login"
+        failureRedirect: "/user/login",
+        failureFlash: true
   })(req,res,next);
 }
 

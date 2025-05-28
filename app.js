@@ -3,6 +3,7 @@ const express = require("express");
 const passport = require("passport");
 const session = require('express-session');
 const pgSession = require("connect-pg-simple")(session);
+const flash = require('connect-flash');
 
 const pool = require('./model/pool')
 const initializePassport = require('./config/passportConfig');
@@ -23,7 +24,9 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false,
 }));
+
 app.use(passport.session());
+app.use(flash());
 
 app.set("views", path.join(__dirname, "src/views"));
 app.set("view engine", "pug");
@@ -32,6 +35,11 @@ app.use(express.urlencoded({ extended: false }));
 
 const assetsPath = path.join(__dirname, "src/css");
 app.use(express.static(assetsPath));
+
+app.use((req,res,next)=>{
+  res.locals.error_messages = req.flash('error');
+  next();
+})
 
 app.use('/user/',userRouter);
 app.get('/',(req,res)=>res.render("index",{isLoged:req.isAuthenticated(),user:req.user}))
