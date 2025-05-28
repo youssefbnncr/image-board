@@ -1,5 +1,4 @@
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.index{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }

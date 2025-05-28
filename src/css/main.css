@@ -81,3 +81,17 @@ input:focus{
 label{
     font-weight: bold;
 }
+
+.avatar-small{
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    margin-right: 16px;
+    margin-left: 16px;
+}
+.avatar-large{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    margin: 32px;
+}

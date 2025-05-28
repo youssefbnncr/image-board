@@ -7,7 +7,7 @@ const upload = require('../config/multerConfig');
 userRouter.get('/register', user.signup);
 userRouter.get('/login', user.signin);
 userRouter.get("/log-out", user.logout);
-userRouter.get("/settings", user.settings);
+userRouter.get("/user-settings", user.settings);
 
 userRouter.post('/add-user', signupValidation, user.addUser);
 userRouter.post('/userLogin', user.login);

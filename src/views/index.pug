@@ -4,7 +4,27 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Landchan 
         link(rel="stylesheet", href="/main.css")
+        link(rel="stylesheet", href="/index.css")
     body 
         include ../partials/header
+        .index
+            div(class='channels sidebar')
+                ul(class='category int')
+                    h3 International
+                    li News
+                    li Language
+                    li Travel
+                ul(class='category tech')
+                    h3 Technology
+                    li Tech News
+                    li Operating Systems
+                    li Programming
+                ul(class='category ent')
+                    h3 Entertainment 
+                    li Movies
+                    li TV Shows
+                    li Anime and Manga
+        
+            div(class='boards')
 
         include ../partials/footer
