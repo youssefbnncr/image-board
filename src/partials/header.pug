@@ -3,7 +3,7 @@ header
     .auth-buttons
        -if (isLoged==true)
         p Logged-in! #{username}
-        form(action="/user/log-out", method="post"): button(type="submit") Log-out
+        form(action="/user/log-out", method="post"): button(type="submit", class='btn') Log-out
        -else if (current_path !== '/register' && current_path !== '/login' && isLoged!==true)
         a(href="/user/register" class="btn register") Register
         a(href="/user/login" class="btn log-in") Log-in
