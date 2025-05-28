@@ -3,11 +3,15 @@
 require('dotenv').config()
 const {Client} = require('pg')
 
-const SQL = `CREATE TABLE IF NOT EXISTS users(
-  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  username VARCHAR(255),
-  password VARCHAR(255)
-)`;
+const SQL = `
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  avatar TEXT DEFAULT 'default.jpg'
+);
+`;
 
 async function main() {
   console.log('creating ...');

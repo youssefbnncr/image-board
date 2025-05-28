@@ -5,18 +5,6 @@ const session = require('express-session');
 const pgSession = require("connect-pg-simple")(session);
 const flash = require('connect-flash');
 
-const multer  = require('multer')
-const dest = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/uploads/avatars')
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' + uniqueSuffix)
-  }
-})
-const upload = multer({ dest })
-
 const pool = require('./model/pool')
 const initializePassport = require('./config/passportConfig');
 require('dotenv').config();

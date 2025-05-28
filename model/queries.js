@@ -15,12 +15,14 @@ const signupValidation = [
 
 const signup = async (username, password) => {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await pool.query("INSERT INTO users (username, password) VALUES ($1, $2)", [username, hashedPassword]);
-    console.log('New account has been created');
+    await pool.query(
+        "INSERT INTO users (username, password, avatar, created_at) VALUES ($1, $2, $3, CURRENT_TIMESTAMP)",
+        [username, hashedPassword, 'default.jpg']
+    );
 };
 
 const change_avatar = async (id,avatar) => {
-    await pool.query("UPDATE INTO user ()")
+    await pool.query("UPDATE users SET avatar = $1 WHERE id = $2", [avatar, id]);
 }
 
 module.exports = { signup, signupValidation, change_avatar };
