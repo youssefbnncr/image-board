@@ -1,0 +1,6 @@
+form(action="/user/change_avatar", method="post" enctype="multipart/form-data")
+  label(for="images") Images
+  input(type="file" name="avatar")
+  button(type="submit") Submit
+
+img(src=`/uploads/avatars/${user.avatar}` alt="User Avatar")

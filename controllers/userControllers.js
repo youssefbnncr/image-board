@@ -46,10 +46,22 @@ const logout = (req, res, next) => {
   });
 };
 
+
+// Avatar
+const settings = (req,res) => {
+    res.render("avatar");
+}
+
+const change_avatar = async(req,res) => {
+    await db.avatar_picture(user.id,new_avatar)
+}
+
 module.exports = {
     signup,
     signin,
     addUser,
     login,
-    logout
+    logout,
+    settings,
+    change_avatar
 }

@@ -19,4 +19,8 @@ const signup = async (username, password) => {
     console.log('New account has been created');
 };
 
-module.exports = { signup, signupValidation };
+const change_avatar = async (id,avatar) => {
+    await pool.query("UPDATE INTO user ()")
+}
+
+module.exports = { signup, signupValidation, change_avatar };
