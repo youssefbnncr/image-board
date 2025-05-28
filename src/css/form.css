@@ -4,3 +4,7 @@
 .error.active + input:focus{
     border-color: red;
 }
+
+.error.active{
+    position: relative;
+}
