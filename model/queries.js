@@ -10,7 +10,7 @@ const signupValidation = [
     body('password')
         .notEmpty().withMessage('Password should be filled.')
         .isLength({ min: 8, max: 32 }).withMessage('Password should be between 8 and 32 characters long.')
-        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]+$/).withMessage('Password should include letters, numbers, and symbols.')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).+$/).withMessage('Password should include letters, numbers, and symbols.')
 ];
 
 const signup = async (username, password) => {
