@@ -2,7 +2,7 @@ header
     a(href="/"): h1.header-title Landchan
     .auth-buttons
        -if (isLoged==true)
-        p Logged-in! #{user.username}
+        h3 #{user.username}
         form(action="/user/log-out", method="post"): button(type="submit", class='btn') Log-out
        -else if (current_path !== '/register' && current_path !== '/login' && isLoged!==true)
         a(href="/user/register" class="btn register") Register

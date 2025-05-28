@@ -76,6 +76,7 @@ input:focus{
     flex-direction: column;
     align-items: center;
     margin: 16px;
+    max-width: 200px;
 }
 label{
     font-weight: bold;

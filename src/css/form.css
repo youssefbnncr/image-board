@@ -4,7 +4,11 @@
 .error.active + input:focus{
     border-color: red;
 }
-
 .error.active{
-    position: relative;
+    font-size: small;
+}
+
+li{
+    display: flex;
+    flex-direction: column;
 }
