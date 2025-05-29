@@ -41,7 +41,7 @@ header{
     font-weight: bold;
 }
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
 
     padding: 8px;
@@ -92,6 +92,12 @@ label{
 .avatar-large{
     height: 100px;
     width: 100px;
+    object-fit: cover;
+    margin: 32px;
+}
+.board-image{
+    height: 200px;
+    width: 200px;
     object-fit: cover;
     margin: 32px;
 }

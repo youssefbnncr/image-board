@@ -1,4 +1,17 @@
 .index{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.sidebar{
+    padding: 32px;
+}
+.board{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.thread{
+    margin: 32px;
+    padding: 16px;
 }

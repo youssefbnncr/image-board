@@ -11,20 +11,20 @@ html(lang="en")
             div(class='channels sidebar')
                 ul(class='category int')
                     h3 International
-                    li News
-                    li Language
-                    li Travel
+                    li(class='board-list', id='news') > News
+                    li(class='board-list', id='lang') > Language
+                    li(class='board-list', id='trav') > Travel
                 ul(class='category tech')
                     h3 Technology
-                    li Tech News
-                    li Operating Systems
-                    li Programming
+                    li(class='board-list', id='tchnews') Tech News
+                    li(class='board-list', id='os') Operating Systems
+                    li(class='board-list', id='prog') Programming
                 ul(class='category ent')
                     h3 Entertainment 
-                    li Movies
-                    li TV Shows
-                    li Anime and Manga
+                    li(class='board-list', id='news') Movies
+                    li(class='board-list', id='news') TV Shows
+                    li(class='board-list', id='news') Anime and Manga
         
-            div(class='boards')
+            include ../partials/board
 
         include ../partials/footer
