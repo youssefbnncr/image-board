@@ -10,6 +10,7 @@ const initializePassport = require('./config/passportConfig');
 require('dotenv').config();
 
 const userRouter = require('./routes/userRouter')
+const boardRouter = require('./routes/boardRouter')
 
 const app = express();
 
@@ -51,6 +52,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/user/',userRouter);
+app.use('/board/',boardRouter)
 app.get('/',(req,res)=>res.render("index"))
 
 app.listen(3000, () => console.log(`Server is running at: http://localhost:3000`));

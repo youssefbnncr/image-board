@@ -71,5 +71,5 @@ module.exports = {
     login,
     logout,
     settings,
-    change_avatar
+    change_avatar,
 }
