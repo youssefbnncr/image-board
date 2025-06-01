@@ -49,7 +49,7 @@ const logout = (req, res, next) => {
 
 // Avatar
 const settings = (req,res) => {
-    res.render("avatar");
+    res.render("user-settings");
 }
 
 const change_avatar = async (req, res) => {
@@ -57,7 +57,7 @@ const change_avatar = async (req, res) => {
         const {filename} = req.file;
         const userId = req.user.id;
         await db.change_avatar(userId, filename);
-        res.redirect("/user/settings");
+        res.redirect("/user/user-settings");
     } catch (err) {
         console.error("Avatar update error:", err);
         res.status(500).send("Error updating avatar");
@@ -71,5 +71,5 @@ module.exports = {
     login,
     logout,
     settings,
-    change_avatar
+    change_avatar,
 }

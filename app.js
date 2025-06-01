@@ -10,6 +10,7 @@ const initializePassport = require("./config/passportConfig");
 require("dotenv").config();
 
 const userRouter = require("./routes/userRouter");
+const boardRouter = require("./routes/boardRouter");
 
 const app = express();
 
@@ -48,11 +49,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.locals.isLoged = req.isAuthenticated();
-  res.locals.user = req.user;
-  next();
-});
+app.use("/user/", userRouter);
+app.use("/board/", boardRouter);
+app.get("/", (req, res) => res.render("index"));
 
 app.use("/user/", userRouter);
 app.get("/", (req, res) => res.render("index"));

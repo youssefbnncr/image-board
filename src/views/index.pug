@@ -4,7 +4,27 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Landchan 
         link(rel="stylesheet", href="/main.css")
+        link(rel="stylesheet", href="/index.css")
     body 
         include ../partials/header
+        .index
+            div(class='channels sidebar')
+                ul(class='category int')
+                    h3 International
+                    a(href='/board/news'): li(class='board-list', id='news') > News
+                    a(href='/board/lang'): li(class='board-list', id='lang') > Language
+                    a(href='/board/trav'): li(class='board-list', id='trav') > Travel
+                ul(class='category tech')
+                    h3 Technology
+                    a(href='/board/tchnews'): li(class='board-list', id='tchnews') > Tech News
+                    a(href='/board/os'): li(class='board-list', id='os') > Operating Systems
+                    a(href='/board/prog'): li(class='board-list', id='prog') > Programming
+                ul(class='category ent')
+                    h3 Entertainment 
+                    a(href='/board/movies'): li(class='board-list', id='movies') > Movies
+                    a(href='/board/tv'): li(class='board-list', id='tv') > TV Shows
+                    a(href='/board/anime'): li(class='board-list', id='anime') > Anime and Manga
+        
+            include ../partials/board
 
         include ../partials/footer

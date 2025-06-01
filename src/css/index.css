@@ -1,5 +1,20 @@
-body{
+.index{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.sidebar{
+    padding: 32px;
+}
+.board{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    align-items: center;
+}
+.thread{
+    margin: 32px;
+    padding: 16px;
+}
+.board-list{
+    padding-left: 16px;
 }
