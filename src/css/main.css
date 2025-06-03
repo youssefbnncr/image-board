@@ -12,7 +12,6 @@ body {
 }
 
 header {
-    margin-bottom: 16px;
     padding: 8px;
     position: sticky;
 
@@ -20,7 +19,7 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    background-color: rgb(255, 242, 226);
+    background-color: #00b9be;
     border-bottom: solid 1px grey;
     box-shadow: 1px 1px 1px grey;
 }
@@ -29,7 +28,7 @@ header {
     align-items: center;
 }
 .header-title {
-    color: #64e2b7;
+    color: #46425e;
     text-shadow: 1px 1px 1px grey;
 }
 .btn {
@@ -50,12 +49,12 @@ header {
 footer {
     padding: 8px;
     display: flex;
-    width: 98vw;
     justify-content: space-between;
     margin-top: auto;
+    background-color: lightgrey;
 }
 #copyright {
-    color: grey;
+    color: gre2y;
 }
 
 input {

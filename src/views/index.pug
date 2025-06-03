@@ -2,10 +2,10 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Landchan 
+        title Landchan
         link(rel="stylesheet", href="/main.css")
         link(rel="stylesheet", href="/index.css")
-    body 
+    body
         include ../partials/header
         .index
             div(class='channels sidebar')
@@ -20,11 +20,11 @@ html(lang="en")
                     a(href='/board/os'): li(class='board-list', id='os') > Operating Systems
                     a(href='/board/prog'): li(class='board-list', id='prog') > Programming
                 ul(class='category ent')
-                    h3 Entertainment 
+                    h3 Entertainment
                     a(href='/board/movies'): li(class='board-list', id='movies') > Movies
                     a(href='/board/tv'): li(class='board-list', id='tv') > TV Shows
                     a(href='/board/anime'): li(class='board-list', id='anime') > Anime and Manga
-        
+
             include ../partials/board
 
         include ../partials/footer

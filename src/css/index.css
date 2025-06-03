@@ -1,20 +1,33 @@
-.index{
+.index {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
 }
 
-.sidebar{
+.sidebar {
     padding: 32px;
 }
-.board{
+.board {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.thread{
+.thread {
     margin: 32px;
     padding: 16px;
 }
-.board-list{
+.board-list {
     padding-left: 16px;
+}
+.channels.sidebar {
+    margin-top: 0;
+    box-shadow: 1px 1px 3px grey;
+    background-color: #ffeecc;
+    a {
+        color: darkcyan;
+        display: block;
+        max-width: max-content;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
 }
