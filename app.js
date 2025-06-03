@@ -53,6 +53,7 @@ app.use("/user/", userRouter);
 app.use("/board/", boardRouter);
 
 app.get("/", (req, res) => res.render("index"));
+app.use((req, res) => res.render("not_found"));
 
 app.listen(3000, () =>
   console.log(`Server is running at: http://localhost:3000`),

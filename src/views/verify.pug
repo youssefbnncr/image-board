@@ -1,0 +1,9 @@
+h1 mod
+form(action="/verify-mod", method="post")
+    input(type="password" name="admin_pass")
+    input(type="submit" value="mod")
+
+h1 admin
+form(action="/verify-admin", method="post")
+    input(type="password" name="mod_pass")
+    input(type="submit" value="admin")
