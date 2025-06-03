@@ -1,10 +1,17 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
     list-style-type: none;
     text-decoration: none;
 }
-header{
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
     margin-bottom: 16px;
     padding: 8px;
     position: sticky;
@@ -12,49 +19,46 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
     background-color: rgb(255, 242, 226);
     border-bottom: solid 1px grey;
     box-shadow: 1px 1px 1px grey;
 }
-.auth-buttons{
+.auth-buttons {
     display: flex;
     align-items: center;
 }
-.header-title{
-    color: #64E2B7;
+.header-title {
+    color: #64e2b7;
     text-shadow: 1px 1px 1px grey;
 }
-.btn{
+.btn {
     border: 1px solid black;
     border-radius: 4px;
     padding: 8px;
     margin: 10px;
     box-shadow: 1px 1px 1px 1px grey;
-    background-color: #DC8BE0;
+    background-color: #dc8be0;
     width: 80px;
     color: black;
     text-align: center;
 }
-.register{
+.register {
     color: rgb(169, 0, 0);
     font-weight: bold;
 }
-footer{
-    position: relative;
-    bottom: 0;
-
+footer {
     padding: 8px;
     display: flex;
     width: 98vw;
     justify-content: space-between;
+    margin-top: auto;
 }
-#copyright{
+#copyright {
     color: grey;
 }
 
-
-input{
+input {
     padding: 8px;
     border-radius: 8px;
     margin: 8px;
@@ -63,39 +67,39 @@ input{
     border-style: solid;
     outline: none;
 }
-input:focus{
+input:focus {
     border-color: black;
 }
-.auth-container{
+.auth-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.auth-form{
+.auth-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 16px;
     max-width: 200px;
 }
-label{
+label {
     font-weight: bold;
 }
 
-.avatar-small{
+.avatar-small {
     height: 40px;
     width: 40px;
     object-fit: cover;
     margin-right: 16px;
     margin-left: 16px;
 }
-.avatar-large{
+.avatar-large {
     height: 100px;
     width: 100px;
     object-fit: cover;
     margin: 32px;
 }
-.board-image{
+.board-image {
     height: 200px;
     width: 200px;
     object-fit: cover;
