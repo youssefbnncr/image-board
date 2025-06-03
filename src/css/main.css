@@ -9,6 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: whitesmoke;
 }
 
 header {
@@ -51,7 +52,6 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    background-color: lightgrey;
 }
 #copyright {
     color: gre2y;
