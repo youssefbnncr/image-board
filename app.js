@@ -49,6 +49,12 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  res.locals.isLoged = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
+
 app.use("/user/", userRouter);
 app.use("/board/", boardRouter);
 

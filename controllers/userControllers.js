@@ -67,6 +67,13 @@ const getVerify = async (req, res) => {
   res.render("verify");
 };
 
+const postVerify = async (req, res) => {
+  const { pass_phrase } = req.body;
+  if (pass_phrase === `${process.env.admin_password}`) {
+    return;
+  }
+};
+
 module.exports = {
   signup,
   signin,
@@ -76,4 +83,5 @@ module.exports = {
   settings,
   change_avatar,
   getVerify,
+  postVerify,
 };

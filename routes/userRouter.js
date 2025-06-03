@@ -14,5 +14,6 @@ userRouter.post("/add-user", signupValidation, user.addUser);
 userRouter.post("/userLogin", user.login);
 userRouter.post("/log-out", user.logout);
 userRouter.post("/change-avatar", upload.single("avatar"), user.change_avatar);
+userRouter.post("/verify", user.postVerify);
 
 module.exports = userRouter;
