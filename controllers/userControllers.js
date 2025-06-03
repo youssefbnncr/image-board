@@ -1,3 +1,4 @@
+require("dotenv").config();
 const db = require("../model/queries");
 const { validationResult } = require("express-validator");
 const passport = require("passport");
@@ -69,8 +70,21 @@ const getVerify = async (req, res) => {
 
 const postVerify = async (req, res) => {
   const { pass_phrase } = req.body;
-  if (pass_phrase === `${process.env.admin_password}`) {
-    return;
+  let role;
+  if (pass_phrase === `${process.env.mod_password}`) {
+    role = 1;
+  } else if (pass_phrase === `${process.env.admin_password}`) {
+    role = 2;
+  } else {
+    res.redirect("/");
+  }
+  try {
+    await db.getRole(role, req.user.id);
+    console.log("User got new role");
+    res.redirect("/");
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("Server Error");
   }
 };
 

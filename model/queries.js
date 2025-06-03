@@ -33,8 +33,8 @@ const change_avatar = async (id, avatar) => {
   await pool.query("UPDATE users SET avatar = $1 WHERE id = $2", [avatar, id]);
 };
 
-/*const getAdmin = async (id) => {
-  await pool.query("UPDATE users SET ")
-} */
+const getRole = async (role, id) => {
+  await pool.query("UPDATE users SET role = $1 WHERE id = $2", [role, id]);
+};
 
-module.exports = { signup, signupValidation, change_avatar };
+module.exports = { signup, signupValidation, change_avatar, getRole };
