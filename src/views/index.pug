@@ -5,6 +5,7 @@ html(lang="en")
         title Landchan
         link(rel="stylesheet", href="/main.css")
         link(rel="stylesheet", href="/index.css")
+        link(rel="stylesheet", href="/form.css")
     body
         include ../partials/header
         .index
@@ -26,5 +27,11 @@ html(lang="en")
                     a(href='/board/anime'): li(class='board-list', id='anime') > Anime and Manga
 
             include ../partials/board
+            div(class='utility')
+                search(class='search-section')
+                    form(action='/board/search', method='get')
+                        label(for='search-board') Search Board
+                        input(type='search', id='search-board', name='search-board')
+                        button(type='submit') Search
 
         include ../partials/footer

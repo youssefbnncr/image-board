@@ -1,14 +1,14 @@
-.error.active + input{
+.error.active + input {
     background-color: rgb(254, 203, 203);
 }
-.error.active + input:focus{
+.error.active + input:focus {
     border-color: red;
 }
-.error.active{
+.error.active {
     font-size: small;
 }
 
-li{
+li {
     display: flex;
     flex-direction: column;
 }
