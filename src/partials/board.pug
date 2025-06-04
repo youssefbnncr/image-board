@@ -1,25 +1,44 @@
+script(src='/show-dialog.js', defer)
 .board
     .thread(id='01')
-        h4 title 
+        h4 title
         img(src="uploads/avatars/avatar-1748456220130-35977950.jpg", alt="", class="board-image")
         p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum consequatur esse numquam magnam asperiores, saepe corporis rem sint quidem quae sapiente omnis eligendi dolores. Voluptates enim provident repellendus repudiandae saepe?
         button Show Thread
     .thread(id='02')
-        h4 title 
+        h4 title
         img(src="uploads/avatars/avatar-1748457697245-165734989.webp", alt="", class="board-image")
         p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum consequatur esse numquam magnam asperiores, saepe corporis rem sint quidem quae sapiente omnis eligendi dolores. Voluptates enim provident repellendus repudiandae saepe?
-        button Show Thread   
+        button Show Thread
     .thread(id='03')
-        h4 title 
+        h4 title
         img(src="uploads/avatars/avatar-1748456220130-35977950.jpg", alt="", class="board-image")
         p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum consequatur esse numquam magnam asperiores, saepe corporis rem sint quidem quae sapiente omnis eligendi dolores. Voluptates enim provident repellendus repudiandae saepe?
         button Show Thread
     .thread(id='04')
-        h4 title 
+        h4 title
         img(src="uploads/avatars/avatar-1748457697245-165734989.webp", alt="", class="board-image")
         p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum consequatur esse numquam magnam asperiores, saepe corporis rem sint quidem quae sapiente omnis eligendi dolores. Voluptates enim provident repellendus repudiandae saepe?
         button Show Thread
-    
+
+    button(type='button',id='show-create-thread-form') Create a new Thread
+    dialog(class='dialog')
+        form(method='post')
+            fieldset
+                legend Create Thread
+                ul
+                    li
+                        label(for='title') Title
+                        input(type='text', name='title', id='create-thread-title')
+                    li
+                        label(for='content') Content
+                        textarea(name='content', id='create-thread-content')
+                    li
+                        label(for='images') Images
+                        input(type='file', name='images', id='create-thread-images', accept='image/*', multiple)
+                button(type='submit') Submit
+
+
     .pages
         a(href="") [1]
         a(href="") [2]

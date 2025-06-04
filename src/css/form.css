@@ -12,3 +12,10 @@ li {
     display: flex;
     flex-direction: column;
 }
+
+textarea {
+    resize: none;
+}
+fieldset {
+    padding: 16px;
+}
