@@ -83,6 +83,16 @@ const createCategory = async (name) => {
   }
 };
 
+const getCategories = async () => {
+  try {
+    const result = await pool.query("SELECT * FROM categories ORDER BY id");
+    return result.rows;
+  } catch (e) {
+    console.error("Error getting categories:", e);
+    throw e;
+  }
+};
+
 const updateCategory = async (id, name) => {
   try {
     const result = await pool.query(
@@ -92,16 +102,6 @@ const updateCategory = async (id, name) => {
     return result.rows[0];
   } catch (e) {
     console.error("Error updating category:", e);
-    throw e;
-  }
-};
-
-const getCategories = async () => {
-  try {
-    const result = await pool.query("SELECT * FROM categories ORDER BY id");
-    return result.rows;
-  } catch (e) {
-    console.error("Error getting categories:", e);
     throw e;
   }
 };
@@ -161,6 +161,51 @@ const deleteBoard = async (id) => {
   }
 };
 
+// Threads
+const createThread = async (board_id, user_id, title, image, message) => {
+  try {
+    const result = await pool.query(
+      "INSERT INTO threads (board_id,user_id,title,image,message) VALUES ($1, $2, $3, $4,$5) RETURNING *",
+      [board_id, user_id, title, image, message],
+    );
+    return result.rows[0];
+  } catch (e) {
+    console.error("Error creating thread:", e);
+    throw e;
+  }
+};
+
+const getThreads = async () => {
+  try {
+    const result = await pool.query("SELECT * FROM threads ORDER by id");
+    return result.rows;
+  } catch (e) {
+    console.error("Error fetching threads:", e);
+    throw e;
+  }
+};
+
+const updateThread = async (id, title, image, message) => {
+  try {
+    await pool.query(
+      "UPDATE threads SET title = $1, image = $2, message = $3 WHERE id = $4 RETURNING *",
+      [title, image, message, id],
+    );
+  } catch (e) {
+    console.error("Error updating thread:", e);
+    throw e;
+  }
+};
+
+const deleteThread = async (id) => {
+  try {
+    await pool.query("DELETE FROM threads WHERE id=$1", [id]);
+  } catch (e) {
+    console.error("Error deleting thread:", e);
+    throw e;
+  }
+};
+
 module.exports = {
   signup,
   signupValidation,
@@ -168,11 +213,15 @@ module.exports = {
   getUsers,
   updateUsersRole,
   createCategory,
-  updateCategory,
   getCategories,
+  updateCategory,
   deleteCategory,
   createBoard,
   getBoards,
   updateBoard,
   deleteBoard,
+  createThread,
+  getThreads,
+  updateThread,
+  deleteThread,
 };
