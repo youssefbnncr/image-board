@@ -3,4 +3,13 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Board
-    body 
+        link(rel="stylesheet", href="/main.css")
+    body
+        includes ../partials/header.pug
+
+        .content
+            includes ../partials/sidebar.pug
+            includes ../partials/threads.pug
+            includes ../paritals/rightbar.pug
+
+        indludes ../partials/footer.pug

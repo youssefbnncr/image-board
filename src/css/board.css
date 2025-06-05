@@ -1,0 +1,12 @@
+.sidebar {
+    padding: 32px;
+}
+.thread {
+    margin: 32px;
+    padding: 16px;
+}
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

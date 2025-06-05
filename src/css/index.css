@@ -1,25 +1,15 @@
 .index {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr 5fr 1fr;
 }
 
-.sidebar {
-    padding: 32px;
-}
-.board {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.thread {
-    margin: 32px;
-    padding: 16px;
-}
 .board-list {
     padding-left: 16px;
 }
-.channels.sidebar {
-    margin-top: 0;
+.boards {
+    grid-column: 2/3;
+    grid-row: 2/3;
     box-shadow: 1px 1px 3px grey;
     background-color: #ffeecc;
     a {

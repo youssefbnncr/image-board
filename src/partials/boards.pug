@@ -1,0 +1,7 @@
+div(class='boards')
+    each category in categories
+        ul(class='category int')
+            h3= category.name
+                each board in boards
+                    if (board.category_id == category.id)
+                        a(href=`/board/${board.tag}`): li(class='board-list') > #{board.name}

@@ -8,21 +8,8 @@ html(lang="en")
         link(rel="stylesheet", href="/form.css")
     body
         include ../partials/header
-        .index
-            div(class='channels sidebar')
-                each category in categories
-                    ul(class='category int')
-                        h3= category.name
-                            each board in boards
-                                if (board.category_id == category.id)
-                                    a(href=`/board/${board.tag}`): li(class='board-list') > #{board.name}
 
-            include ../partials/board
-            div(class='utility')
-                search(class='search-section')
-                    form(action='/board/search', method='get')
-                        label(for='search-board') Search Board
-                        input(type='search', id='search-board', name='search-board')
-                        button(type='submit') Search
+        .index
+            include ../partials/boards
 
         include ../partials/footer
