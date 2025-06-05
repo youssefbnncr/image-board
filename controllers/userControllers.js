@@ -56,7 +56,7 @@ const change_avatar = async (req, res) => {
   try {
     const { filename } = req.file;
     const userId = req.user.id;
-    await db.change_avatar(userId, filename);
+    await db.updateUserAvatar(userId, filename);
     res.redirect("/user/user-settings");
   } catch (err) {
     console.error("Avatar update error:", err);
@@ -79,9 +79,19 @@ const postVerify = async (req, res) => {
     res.redirect("/");
   }
   try {
-    await db.getRole(role, req.user.id);
+    await db.updateUsersRole(req.user.id, role);
     console.log("User got new role");
     res.redirect("/");
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("Server Error");
+  }
+};
+
+const admin = async (req, res) => {
+  try {
+    const users = await db.getUsers();
+    res.render("admin", { users });
   } catch (e) {
     console.error(e);
     res.status(500).send("Server Error");
@@ -98,4 +108,5 @@ module.exports = {
   change_avatar,
   getVerify,
   postVerify,
+  admin,
 };

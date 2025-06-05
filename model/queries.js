@@ -2,6 +2,7 @@ const pool = require("./pool");
 const bcrypt = require("bcryptjs");
 const { body } = require("express-validator");
 
+// Signup Validation
 const signupValidation = [
   body("username")
     .notEmpty()
@@ -21,20 +22,97 @@ const signupValidation = [
     .withMessage("Password should include letters, numbers, and symbols."),
 ];
 
+// Users
 const signup = async (username, password) => {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  await pool.query(
-    "INSERT INTO users (username, password, avatar, created_at) VALUES ($1, $2, $3, CURRENT_TIMESTAMP)",
-    [username, hashedPassword, "default.jpg"],
-  );
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await pool.query(
+      "INSERT INTO users (username, password, avatar, created_at) VALUES ($1, $2, $3, CURRENT_TIMESTAMP)",
+      [username, hashedPassword, "default.jpg"],
+    );
+  } catch (e) {
+    console.error("Error creating user:", e);
+    throw e;
+  }
 };
 
-const change_avatar = async (id, avatar) => {
-  await pool.query("UPDATE users SET avatar = $1 WHERE id = $2", [avatar, id]);
+const updateUserAvatar = async (id, avatar) => {
+  try {
+    await pool.query("UPDATE users SET avatar = $1 WHERE id = $2", [
+      avatar,
+      id,
+    ]);
+  } catch (e) {
+    console.error("Error updating avatar:", e);
+    throw e;
+  }
 };
 
-const getRole = async (role, id) => {
-  await pool.query("UPDATE users SET role = $1 WHERE id = $2", [role, id]);
+const getUsers = async () => {
+  try {
+    const result = await pool.query(
+      "SELECT id, username, created_at, role FROM users ORDER BY id ASC",
+    );
+    return result.rows;
+  } catch (e) {
+    console.error("Error getting users:", e);
+    throw e;
+  }
 };
 
-module.exports = { signup, signupValidation, change_avatar, getRole };
+const updateUsersRole = async (id, role) => {
+  try {
+    await pool.query("UPDATE users SET role = $1 WHERE id = $2", [role, id]);
+  } catch (e) {
+    console.error("Error updating role:", e);
+    throw e;
+  }
+};
+
+// Categories
+const createCategory = async (name) => {
+  try {
+    const result = await pool.query(
+      "INSERT INTO categories (name) VALUES ($1) RETURNING *",
+      [name],
+    );
+    return result.rows[0];
+  } catch (e) {
+    console.error("Error creating category:", e);
+    throw e;
+  }
+};
+
+const updateCategory = async (id, name) => {
+  try {
+    const result = await pool.query(
+      "UPDATE categories SET name = $1 WHERE id = $2 RETURNING *",
+      [name, id],
+    );
+    return result.rows[0];
+  } catch (e) {
+    console.error("Error updating category:", e);
+    throw e;
+  }
+};
+
+const getCategories = async () => {
+  try {
+    const result = await pool.query("SELECT * FROM categories ORDER BY id");
+    return result.rows;
+  } catch (e) {
+    console.error("Error getting categories:", e);
+    throw e;
+  }
+};
+
+module.exports = {
+  signup,
+  signupValidation,
+  updateUserAvatar,
+  getUsers,
+  updateUsersRole,
+  createCategory,
+  updateCategory,
+  getCategories,
+};
