@@ -1,3 +1,7 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
 .sidebar {
     padding: 32px;
 }
@@ -9,4 +13,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.boards {
+    grid-column: 1/2;
+    box-shadow: 1px 1px 3px grey;
+    background-color: #ffeecc;
+    a {
+        color: #46425e;
+        display: block;
+        max-width: max-content;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
 }

@@ -4,13 +4,13 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Board
         link(rel="stylesheet", href="/main.css")
+        link(rel="stylesheet", href="/board.css")
     body
-        h2 Board
-        includes ../partials/header.pug
+        include ../partials/header.pug
 
         .content
-            includes ../partials/sidebar.pug
-            includes ../partials/threads.pug
-            includes ../paritals/rightbar.pug
+            include ../partials/sidebar.pug
+            include ../partials/threads.pug
+            include ../partials/rightbar.pug
 
-        indludes ../partials/footer.pug
+        include ../partials/footer.pug
