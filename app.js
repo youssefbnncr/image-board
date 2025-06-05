@@ -10,7 +10,7 @@ const initializePassport = require("./config/passportConfig");
 require("dotenv").config();
 
 const userRouter = require("./routes/userRouter");
-const boardRouter = require("./routes/boardRouter");
+const indexRouter = require("./routes/indexRouter");
 
 const app = express();
 
@@ -56,9 +56,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/user/", userRouter);
-app.use("/board/", boardRouter);
+app.use("/", indexRouter);
 
-app.get("/", (req, res) => res.render("index"));
 app.use((req, res) => res.render("not_found"));
 
 app.listen(3000, () =>

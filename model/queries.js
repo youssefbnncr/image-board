@@ -106,6 +106,61 @@ const getCategories = async () => {
   }
 };
 
+const deleteCategory = async (id) => {
+  try {
+    await pool.query("DELETE FROM categories WHERE id = $1", [id]);
+  } catch (e) {
+    console.error("Error deleting category:", e);
+    throw e;
+  }
+};
+
+// Boards
+const createBoard = async (name, category_id, created_by) => {
+  try {
+    const result = await pool.query(
+      "INSERT INTO boards (name, category_id, created_by) VALUES ($1, $2, $3) RETURNING *",
+      [name, category_id, created_by],
+    );
+    return result.rows[0];
+  } catch (e) {
+    console.error("Error creating board:", e);
+    throw e;
+  }
+};
+
+const getBoards = async () => {
+  try {
+    const result = await pool.query("SELECT * FROM boards ORDER BY id");
+    return result.rows;
+  } catch (e) {
+    console.error("Error getting boards:", e);
+    throw e;
+  }
+};
+
+const updateBoard = async (id, name, category_id) => {
+  try {
+    const result = await pool.query(
+      "UPDATE boards SET name = $1, category_id = $2 WHERE id = $3 RETURNING *",
+      [name, category_id, id],
+    );
+    return result.rows[0];
+  } catch (e) {
+    console.error("Error updating board:", e);
+    throw e;
+  }
+};
+
+const deleteBoard = async (id) => {
+  try {
+    await pool.query("DELETE FROM boards WHERE id = $1", [id]);
+  } catch (e) {
+    console.error("Error deleting board:", e);
+    throw e;
+  }
+};
+
 module.exports = {
   signup,
   signupValidation,
@@ -115,4 +170,9 @@ module.exports = {
   createCategory,
   updateCategory,
   getCategories,
+  deleteCategory,
+  createBoard,
+  getBoards,
+  updateBoard,
+  deleteBoard,
 };
