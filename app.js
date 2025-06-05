@@ -1,17 +1,21 @@
+// Express
 const path = require("node:path");
 const express = require("express");
+// Passport
 const passport = require("passport");
 const session = require("express-session");
 const pgSession = require("connect-pg-simple")(session);
-const flash = require("connect-flash");
-
-const pool = require("./model/pool");
 const initializePassport = require("./config/passportConfig");
+// Flash
+const flash = require("connect-flash");
+// DB
+const pool = require("./model/pool");
 require("dotenv").config();
-
+// Routers
 const userRouter = require("./routes/userRouter");
 const indexRouter = require("./routes/indexRouter");
-
+const boardsRouter = require("./routes/boardsRouter");
+// App starts
 const app = express();
 
 initializePassport(passport);
@@ -56,6 +60,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/user/", userRouter);
+app.use("/board/", boardsRouter);
 app.use("/", indexRouter);
 
 app.use((req, res) => res.render("not_found"));
