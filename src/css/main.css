@@ -53,6 +53,9 @@ header {
 .btn:hover {
     background-color: var(--coral);
 }
+.btn-large {
+    width: auto;
+}
 .register {
     color: rgb(169, 0, 0);
     font-weight: bold;
@@ -60,7 +63,8 @@ header {
 footer {
     padding: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    font-size: 14px;
     margin-top: auto;
 }
 #copyright {
