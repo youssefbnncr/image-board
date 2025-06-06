@@ -7,7 +7,7 @@ html(lang="en")
         link(rel="stylesheet", href="/board.css")
     body
         include ../partials/header.pug
-        h2 Board: #{tag}
+        h2 Rules: #{board.rules}
         .content
             include ../partials/sidebar.pug
             include ../partials/threads.pug

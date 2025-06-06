@@ -3,11 +3,11 @@ const db = require("../model/queries");
 const displayBoard = async (req, res) => {
   try {
     const results = await db.getBoards();
-    res.locals.tag = req.params.tag;
     res.locals.categories = await db.getCategories();
     let v = false;
     results.forEach((result) => {
       if (req.params.tag === result.tag) {
+        res.locals.board = result;
         v = true;
       }
     });
