@@ -1,3 +1,4 @@
+@import url("palette.css");
 * {
     padding: 0px;
     margin: 0px;
@@ -9,18 +10,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: whitesmoke;
+    background-color: var(--platinum);
 }
 
 header {
     padding: 8px;
     position: sticky;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    justify-content: space-between;
+    justify-items: center;
 
-    background-color: #00b9be;
+    background-color: var(--silver);
     border-bottom: solid 1px grey;
     box-shadow: 1px 1px 1px grey;
 }
@@ -29,7 +31,9 @@ header {
     align-items: center;
 }
 .header-title {
-    color: #46425e;
+    grid-column: 2/3;
+    text-align: center;
+    color: var(--coral);
     text-shadow: 1px 1px 1px grey;
 }
 .btn {
@@ -37,11 +41,17 @@ header {
     border-radius: 4px;
     padding: 8px;
     margin: 10px;
+
+    cursor: pointer;
+
     box-shadow: 1px 1px 1px 1px grey;
-    background-color: #dc8be0;
+    background-color: var(--taupe-gray);
     width: 80px;
-    color: black;
+    color: white;
     text-align: center;
+}
+.btn:hover {
+    background-color: var(--coral);
 }
 .register {
     color: rgb(169, 0, 0);
