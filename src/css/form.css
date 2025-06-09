@@ -13,9 +13,6 @@ li {
     flex-direction: column;
 }
 
-textarea {
-    resize: none;
-}
 fieldset {
     padding: 16px;
 }

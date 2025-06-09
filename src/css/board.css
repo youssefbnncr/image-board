@@ -28,8 +28,24 @@
 .pages {
     a {
         color: var(--accent-1);
+        font-weight: bold;
+        padding-left: 4px;
+        padding-right: 4px;
     }
     a:hover {
         color: var(--font-accent);
+    }
+}
+
+.create-thread {
+    background-color: var(--primary);
+    color: var(--font);
+    width: 800px;
+    height: 470px;
+    label {
+        color: var(--accent-2);
+    }
+    textarea {
+        font-family: var(--primary-font);
     }
 }

@@ -5,6 +5,7 @@
     margin: 0px;
     list-style-type: none;
     text-decoration: none;
+    resize: none;
 }
 
 body {
@@ -148,4 +149,12 @@ label {
         text-decoration: underline;
         color: var(--font-accent);
     }
+}
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 16px;
 }

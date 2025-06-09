@@ -9,21 +9,19 @@ script(src='/show-dialog.js', defer)
 
 
     button(type='button',class='btn btn-large' ,id='show-create-thread-form') Create a new Thread
-    dialog(class='dialog')
+    dialog(class='create-thread dialog')
         form(method='post')
-            fieldset
-                legend Create Thread
-                ul
-                    li
-                        label(for='title') Title
-                        input(type='text', name='title', id='create-thread-title')
-                    li
-                        label(for='content') Content
-                        textarea(name='content', id='create-thread-content')
-                    li
-                        label(for='images') Images
-                        input(type='file', name='images', id='create-thread-images', accept='image/*', multiple)
-                button(type='submit', class='btn') Submit
+            ul
+                li
+                    label(for='create-thread-title') Title
+                    input(type='text', name='title', id='create-thread-title')
+                li
+                    label(for='create-thread-content') Content
+                    textarea(name='content', id='create-thread-content', rows="10")
+                li
+                    label(for='images') Images
+                    input(type='file', name='images', id='create-thread-images', accept='image/*', multiple)
+            button(type='submit', class='btn') Submit
 
 
     .pages
