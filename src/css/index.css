@@ -14,28 +14,8 @@
 .boards {
     grid-column: 2/3;
     grid-row: 2/3;
-    background-color: var(--primary);
-    padding: 32px;
     min-height: 400px;
     min-width: 800px;
-    h2 {
-        text-align: center;
-        background-color: var(--secondary);
-        padding: 8px;
-        margin-bottom: 16px;
-    }
-    h3 {
-        color: var(--accent-2);
-    }
-    a {
-        color: var(--accent-1);
-        display: block;
-        max-width: max-content;
-    }
-    a:hover {
-        text-decoration: underline;
-        color: var(--font-accent);
-    }
 }
 
 .about {
