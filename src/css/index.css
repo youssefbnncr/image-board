@@ -14,23 +14,8 @@
 .boards {
     grid-column: 2/3;
     grid-row: 2/3;
-    box-shadow: 1px 1px 3px grey;
-    background-color: var(--jet);
-    padding: 32px;
     min-height: 400px;
     min-width: 800px;
-    h3 {
-        color: var(--silver);
-    }
-    a {
-        color: var(--platinum);
-        display: block;
-        max-width: max-content;
-    }
-    a:hover {
-        text-decoration: underline;
-        color: var(--coral);
-    }
 }
 
 .about {

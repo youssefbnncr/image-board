@@ -1,9 +1,11 @@
+@import url("palette.css");
+
 .content {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
 }
 .sidebar {
-    padding: 32px;
+    height: 100vh;
 }
 .thread {
     margin: 32px;
@@ -17,13 +19,33 @@
 .boards {
     grid-column: 1/2;
     box-shadow: 1px 1px 3px grey;
-    background-color: #ffeecc;
+    padding: 32px;
+    height: 100%;
+}
+.board-list {
+    padding-left: 16px;
+}
+.pages {
     a {
-        color: #46425e;
-        display: block;
-        max-width: max-content;
+        color: var(--accent-1);
+        font-weight: bold;
+        padding-left: 4px;
+        padding-right: 4px;
     }
     a:hover {
-        text-decoration: underline;
+        color: var(--font-accent);
+    }
+}
+
+.create-thread {
+    background-color: var(--primary);
+    color: var(--font);
+    width: 800px;
+    height: 470px;
+    label {
+        color: var(--accent-2);
+    }
+    textarea {
+        font-family: var(--primary-font);
     }
 }

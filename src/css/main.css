@@ -1,16 +1,21 @@
 @import url("palette.css");
+@import url("fonts.css");
+
 * {
     padding: 0px;
     margin: 0px;
     list-style-type: none;
     text-decoration: none;
+    resize: none;
 }
 
 body {
     display: flex;
+    font-family: var(--primary-font);
     flex-direction: column;
     min-height: 100vh;
-    background-color: var(--platinum);
+    color: var(--font);
+    background-color: var(--background);
 }
 
 header {
@@ -22,36 +27,68 @@ header {
     align-items: center;
     justify-items: center;
 
-    background-color: var(--silver);
+    background-color: var(--secondary);
     border-bottom: solid 1px grey;
     box-shadow: 1px 1px 1px grey;
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu > ul {
+        margin-top: 42px;
+        display: none;
+        position: absolute;
+        width: 200px;
+        z-index: 1;
+        a {
+            color: inherit;
+        }
+        li {
+            cursor: pointer;
+            text-align: center;
+            background-color: var(--primary);
+            padding: 8px 0;
+        }
+        button {
+            border: none;
+            background-color: inherit;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: var(--secondary);
+        }
+    }
 }
 .auth-buttons {
     display: flex;
     align-items: center;
+    h3 {
+        color: var(--font-accent);
+    }
 }
 .header-title {
     grid-column: 2/3;
     text-align: center;
-    color: var(--coral);
+    color: var(--font);
     text-shadow: 1px 1px 1px grey;
 }
 .btn {
     border: 1px solid black;
-    border-radius: 4px;
     padding: 8px;
     margin: 10px;
 
     cursor: pointer;
 
-    box-shadow: 1px 1px 1px 1px grey;
-    background-color: var(--taupe-gray);
+    background-color: var(--accent-1);
     width: 80px;
-    color: white;
+    color: var(--font);
     text-align: center;
 }
 .btn:hover {
-    background-color: var(--coral);
+    background-color: var(--font-accent);
 }
 .btn-large {
     width: auto;
@@ -74,7 +111,6 @@ footer {
 input,
 textarea {
     padding: 8px;
-    border-radius: 8px;
     margin: 8px;
     border-width: 2px;
     border-color: grey;
@@ -101,9 +137,10 @@ label {
 }
 
 .avatar-small {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     object-fit: cover;
+    border-radius: 100%;
     margin-right: 16px;
     margin-left: 16px;
 }
@@ -121,4 +158,43 @@ label {
 }
 .search-section {
     margin: 32px;
+}
+
+.boards {
+    background-color: var(--primary);
+    padding: 32px;
+    h2 {
+        text-align: center;
+        background-color: var(--secondary);
+        padding: 8px;
+        margin-bottom: 16px;
+    }
+    h3 {
+        color: var(--accent-2);
+    }
+    a {
+        color: var(--accent-1);
+        display: block;
+        max-width: max-content;
+    }
+    a:hover {
+        text-decoration: underline;
+        color: var(--font-accent);
+    }
+}
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 16px;
+}
+.burger {
+    font-family: "FontAwesome";
+    margin-left: 16px;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+    display:;
 }
