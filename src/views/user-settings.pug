@@ -5,7 +5,12 @@ html(lang="en")
         title User Settings
         link(rel="stylesheet", href="/main.css")
         link(rel="stylesheet", href="/user-settings.css")
-    body 
+    body
         include ../partials/header.pug
         h1 User settings
-        include ../partials/avatar.pug
+
+        form(action="/user/change-avatar", method="post" enctype="multipart/form-data", class='upload-form')
+          label(for="images") Avatar
+          input(type="file" name="avatar" accept='image/*')
+          button(type="submit") Change
+          img(src=`/avatar/${user.avatar}`, alt="pfp", class='avatar-large')

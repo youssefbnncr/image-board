@@ -2,8 +2,8 @@ header
     h1 temp
     a(href="/"): h1.header-title Tochi
     .auth-buttons
-       -if (isLoged==true)
-        a(href="/user/user-settings"): img(src=`/uploads/avatars/${user.avatar}`, alt="avatar", class='avatar-small')
+       -if (isAuthenticated==true)
+        a(href="/user/user-settings"): img(src=`/avatar/${user.avatar}`, alt="avatar", class='avatar-small')
         a(href="/user/user-settings"): h3 #{user.username}
         form(action="/user/log-out", method="post"): button(type="submit", class='btn') Log-out
        -else if (current_path !== '/register' && current_path !== '/login' && isLoged!==true)

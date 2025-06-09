@@ -139,6 +139,18 @@ const getBoards = async () => {
   }
 };
 
+const getBoardId = async (tag) => {
+  try {
+    const result = await pool.query("SELECT id FROM boards WHERE tag=$1", [
+      tag,
+    ]);
+    return result.rows[0];
+  } catch (e) {
+    console.error("Error getting the id", e);
+    throw e;
+  }
+};
+
 const updateBoard = async (id, name, category_id) => {
   try {
     const result = await pool.query(
@@ -164,11 +176,10 @@ const deleteBoard = async (id) => {
 // Threads
 const createThread = async (board_id, user_id, title, image, message) => {
   try {
-    const result = await pool.query(
-      "INSERT INTO threads (board_id,user_id,title,image,message) VALUES ($1, $2, $3, $4,$5) RETURNING *",
+    await pool.query(
+      "INSERT INTO threads (board_id,user_id,title,image,message) VALUES ($1, $2, $3, $4,$5)",
       [board_id, user_id, title, image, message],
     );
-    return result.rows[0];
   } catch (e) {
     console.error("Error creating thread:", e);
     throw e;
@@ -218,6 +229,7 @@ module.exports = {
   deleteCategory,
   createBoard,
   getBoards,
+  getBoardId,
   updateBoard,
   deleteBoard,
   createThread,

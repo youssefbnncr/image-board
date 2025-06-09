@@ -1,5 +1,0 @@
-form(action="/user/change-avatar", method="post" enctype="multipart/form-data", class='upload-form')
-  label(for="images") Avatar
-  input(type="file" name="avatar")
-  button(type="submit") Change
-  img(src=`/uploads/avatars/${user.avatar}` alt="User Avatar", class='avatar-large')

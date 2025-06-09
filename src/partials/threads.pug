@@ -1,3 +1,4 @@
+script(src='/formThread.js', defer)
 script(src='/show-dialog.js', defer)
 .board
     .thread(id='01')
@@ -9,20 +10,20 @@ script(src='/show-dialog.js', defer)
 
     button(type='button',id='show-create-thread-form') Create a new Thread
     dialog(class='dialog')
-        form(method='post')
+        form(method='POST', action="/threads/createThread",enctype="multipart/form-data")
             fieldset
                 legend Create Thread
                 ul
                     li
-                        label(for='title') Title
+                        label(for='create-thread-title') Title
                         input(type='text', name='title', id='create-thread-title')
                     li
-                        label(for='content') Content
-                        textarea(name='content', id='create-thread-content')
+                        label(for='create-thread-content') Content
+                        textarea(name='message', id='create-thread-content')
                     li
-                        label(for='images') Images
-                        input(type='file', name='images', id='create-thread-images', accept='image/*', multiple)
-                button(type='submit') Submit
+                        label(for='create-thread-images') Image
+                        input(type='file', name='post', id='create-thread-images', accept='image/*')
+                button(type='submit',id='') Submit
 
 
     .pages

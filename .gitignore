@@ -2,5 +2,6 @@ node_modules/
 dist/
 package-lock.json
 .env
-uploads/avatars/*
-!uploads/avatars/default.jpg
+uploads/avatar/*
+uploads/posts/*
+!uploads/avatar/default.jpg

@@ -54,10 +54,11 @@ const settings = (req, res) => {
 
 const change_avatar = async (req, res) => {
   try {
-    const { filename } = req.file;
-    const userId = req.user.id;
-    await db.updateUserAvatar(userId, filename);
+    const user_id = req.user.id;
+    const avatar = req.file.filename;
+    await db.updateUserAvatar(user_id, avatar);
     res.redirect("/user/user-settings");
+    console.log("Uploaded avatar:", req.file);
   } catch (err) {
     console.error("Avatar update error:", err);
     res.status(500).send("Error updating avatar");

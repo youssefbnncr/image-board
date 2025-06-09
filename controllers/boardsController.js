@@ -5,8 +5,9 @@ const displayBoard = async (req, res) => {
     const results = await db.getBoards();
     res.locals.categories = await db.getCategories();
     let v = false;
+    const tag = req.params.tag;
     results.forEach((result) => {
-      if (req.params.tag === result.tag) {
+      if (tag === result.tag) {
         res.locals.board = result;
         v = true;
       }
