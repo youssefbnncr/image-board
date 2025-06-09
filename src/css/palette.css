@@ -1,7 +1,9 @@
 * {
-    --jet: #303030ff;
-    --platinum: #e8e8e8ff;
-    --silver: #bfbfbfff;
-    --taupe-gray: #96939bff;
-    --coral: #fc814aff;
+    --font: #f9fdff;
+    --font-accent: #86bbd8;
+    --primary: #272727;
+    --secondary: #1c1c1c;
+    --background: #303030;
+    --accent-1: #47a8bd;
+    --accent-2: #f5e663;
 }

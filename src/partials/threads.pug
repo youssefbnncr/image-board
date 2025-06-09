@@ -1,13 +1,14 @@
 script(src='/show-dialog.js', defer)
 .board
+    h2 Rules: #{board.rules}
     .thread(id='01')
         h4 title
         img(src="uploads/avatars/avatar-1748456220130-35977950.jpg", alt="", class="board-image")
         p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum consequatur esse numquam magnam asperiores, saepe corporis rem sint quidem quae sapiente omnis eligendi dolores. Voluptates enim provident repellendus repudiandae saepe?
-        button Show Thread
+        button(class='btn btn-large') Show Thread
 
 
-    button(type='button',id='show-create-thread-form') Create a new Thread
+    button(type='button',class='btn btn-large' ,id='show-create-thread-form') Create a new Thread
     dialog(class='dialog')
         form(method='post')
             fieldset
@@ -22,7 +23,7 @@ script(src='/show-dialog.js', defer)
                     li
                         label(for='images') Images
                         input(type='file', name='images', id='create-thread-images', accept='image/*', multiple)
-                button(type='submit') Submit
+                button(type='submit', class='btn') Submit
 
 
     .pages
