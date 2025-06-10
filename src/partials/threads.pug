@@ -2,11 +2,11 @@ script(src='/formThread.js', defer)
 script(src='/show-dialog.js', defer)
 .board
     h2 Rules: #{board.rules}
-    .thread(id='01')
-        h4 title
-        img(src="uploads/avatars/avatar-1748456220130-35977950.jpg", alt="", class="board-image")
-        p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum consequatur esse numquam magnam asperiores, saepe corporis rem sint quidem quae sapiente omnis eligendi dolores. Voluptates enim provident repellendus repudiandae saepe?
-        button(class='btn btn-large') Show Thread
+    each thread in threads
+        .thread(id='01')
+            h4= thread.title
+            img(src=`/posts/${thread.image}`, alt=`${thread.image}`, class="board-image")
+            p= thread.message
 
     button(type='button',class='btn btn-large' ,id='show-create-thread-form') Create a new Thread
     dialog(class='create-thread dialog')

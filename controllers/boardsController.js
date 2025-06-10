@@ -14,6 +14,8 @@ const displayBoard = async (req, res) => {
     });
     if (v == true) {
       res.locals.boards = results;
+      const threads = await db.getThreads();
+      res.locals.threads = threads;
       return res.status(200).render("board");
     }
     return res.status(404).render("not_found");
