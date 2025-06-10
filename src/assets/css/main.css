@@ -1,6 +1,11 @@
 @import url("palette.css");
 @import url("fonts.css");
 
+@font-face {
+    font-family: "fa_regular";
+    src: url("../fontawesome/webfonts/fa-solid-900.ttf");
+}
+
 * {
     padding: 0px;
     margin: 0px;
@@ -191,10 +196,9 @@ label {
     padding: 16px;
 }
 .burger {
-    font-family: "FontAwesome";
+    font-family: "fa_regular";
     margin-left: 16px;
     font-size: 24px;
     cursor: pointer;
     user-select: none;
-    display:;
 }
