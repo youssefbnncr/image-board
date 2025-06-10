@@ -14,11 +14,13 @@ const displayBoard = async (req, res) => {
     });
     if (v == true) {
       res.locals.boards = results;
-      const threads = await db.getThreads();
+      const boardId = await db.getBoardIdbyTag(tag);
+      const threads = await db.getThreads(boardId.id);
+      console.log(boardId.id);
       res.locals.threads = threads;
       return res.status(200).render("board");
     }
-    return res.status(404).render("not_found");
+    return res.status(404).render("404");
   } catch (e) {
     console.error("Error fetching boards:", e);
     res.status(500).send("Error fetching boards data.");

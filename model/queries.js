@@ -186,12 +186,27 @@ const createThread = async (board_id, user_id, title, image, message) => {
   }
 };
 
-const getThreads = async () => {
+const getThreads = async (board_id) => {
   try {
-    const result = await pool.query("SELECT * FROM threads ORDER by id");
+    const result = await pool.query(
+      "SELECT * FROM threads WHERE board_id=$1 ORDER by created_at DESC",
+      [board_id],
+    );
     return result.rows;
   } catch (e) {
     console.error("Error fetching threads:", e);
+    throw e;
+  }
+};
+
+const getBoardIdbyTag = async (tag) => {
+  try {
+    const result = await pool.query("SELECT id FROM boards WHERE tag=$1", [
+      tag,
+    ]);
+    return result.rows[0];
+  } catch (e) {
+    console.error(e);
     throw e;
   }
 };
@@ -236,4 +251,5 @@ module.exports = {
   getThreads,
   updateThread,
   deleteThread,
+  getBoardIdbyTag,
 };
