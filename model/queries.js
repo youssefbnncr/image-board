@@ -199,18 +199,6 @@ const getThreads = async (board_id) => {
   }
 };
 
-const getBoardIdbyTag = async (tag) => {
-  try {
-    const result = await pool.query("SELECT id FROM boards WHERE tag=$1", [
-      tag,
-    ]);
-    return result.rows[0];
-  } catch (e) {
-    console.error(e);
-    throw e;
-  }
-};
-
 const updateThread = async (id, title, image, message) => {
   try {
     await pool.query(
@@ -251,5 +239,4 @@ module.exports = {
   getThreads,
   updateThread,
   deleteThread,
-  getBoardIdbyTag,
 };

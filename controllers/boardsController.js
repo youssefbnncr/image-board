@@ -13,11 +13,12 @@ const displayBoard = async (req, res) => {
       }
     });
     if (v == true) {
-      res.locals.boards = results;
-      const boardId = await db.getBoardIdbyTag(tag);
+      const boardId = await db.getBoardId(tag);
       const threads = await db.getThreads(boardId.id);
       console.log(boardId.id);
       res.locals.threads = threads;
+      res.locals.boards = results;
+      res.locals.tag = tag;
       return res.status(200).render("board");
     }
     return res.status(404).render("404");

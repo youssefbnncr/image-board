@@ -12,7 +12,7 @@ script(src='/show-dialog.js', defer)
 
     button(type='button',class='btn btn-large' ,id='show-create-thread-form') Create a new Thread
     dialog(class='create-thread dialog')
-        form(method='POST', action="/threads/createThread",enctype="multipart/form-data")
+        form(method='POST', action=`/threads/createThread/${tag}`,enctype="multipart/form-data")
             ul
                 li
                     label(for='create-thread-title') Title
