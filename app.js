@@ -41,7 +41,7 @@ app.set("view engine", "pug");
 // Accept form data
 app.use(express.urlencoded({ extended: false }));
 // CSS
-const assetsPath = path.join(__dirname, "src/css");
+const assetsPath = path.join(__dirname, "src/assets");
 app.use(express.static(assetsPath));
 
 app.use("/avatar", express.static(path.join(__dirname, "uploads/avatar")));
